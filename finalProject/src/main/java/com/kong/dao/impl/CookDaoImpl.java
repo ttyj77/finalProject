@@ -24,9 +24,14 @@ public class CookDaoImpl implements CookDao{
 	}
 	
 	@Override
-	public CookEntity getCook(String cook_id) {
-		CookEntity cookEntity = cookRepository.getById(cook_id);
+	public CookEntity getCook(String id) {
+		CookEntity cookEntity = cookRepository.getById(id);
 		return cookEntity;
 		
+	}
+	@Override
+	public CookEntity getCookName(String name) {
+		CookEntity cookEntity = cookRepository.getById(name);
+		return cookEntity;
 	}
 }

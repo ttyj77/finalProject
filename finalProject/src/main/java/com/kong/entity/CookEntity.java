@@ -24,10 +24,10 @@ import lombok.ToString;
 @Builder
 public class CookEntity {
 	@Id
-	@Column(name="cook_id")
-	private String cook_id; //레시피 아이디
+	@Column(name="id")
+	private String id; //레시피 아이디
 	
-	@Column(nullable = false, length = 50)
+	@Column(nullable = false, length = 50, name="name")
 	private String name;
 	
 	@Column
@@ -36,7 +36,5 @@ public class CookEntity {
 	private String how_to_make;
 	@Column
 	private String link;	
-	
-	
-	
+
 }

@@ -12,15 +12,12 @@ import lombok.ToString;
 @ToString
 @Builder
 public class CookDto {
-	private String cook_id;
+	private String id;
 	private String name;
 	private int company_code;
 	private String how_to_make;
 	private String link;
 	
 
-	
-	
-	
 
 }

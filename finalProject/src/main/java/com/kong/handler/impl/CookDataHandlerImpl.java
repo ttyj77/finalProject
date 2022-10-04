@@ -21,14 +21,19 @@ public class CookDataHandlerImpl implements CookDataHandler {
 	}
 	
 	@Override
-	public CookEntity saveCookEntity(String cook_id,String name, int company_code, String how_to_make,String link) {
-		CookEntity cookEntity = new CookEntity(cook_id, name,company_code,how_to_make,link);
+	public CookEntity saveCookEntity(String id,String name, int company_code, String how_to_make,String link) {
+		CookEntity cookEntity = new CookEntity(id, name,company_code,how_to_make,link);
 		
 		return cookDao.saveCook(cookEntity);
 	}
 	
 	@Override
-	public CookEntity getCookEntity(String cook_id) {
-		return cookDao.getCook(cook_id);
+	public CookEntity getCookEntity(String id) {
+		return cookDao.getCook(id);
+	}
+	
+	@Override
+	public CookEntity getCookNameEntity(String name) {
+		return cookDao.getCookName(name);
 	}
 }

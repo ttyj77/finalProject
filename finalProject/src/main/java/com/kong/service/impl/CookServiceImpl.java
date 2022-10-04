@@ -23,18 +23,25 @@ public class CookServiceImpl implements CookService{
 	}
 	
 	@Override
-	public CookDto saveCook(String cook_id,String name, int company_code, String how_to_make,String link) {
-		CookEntity cookEntity = cookDataHandler.saveCookEntity(cook_id, name, company_code, how_to_make, link);
+	public CookDto saveCook(String id,String name, int company_code, String how_to_make,String link) {
+		CookEntity cookEntity = cookDataHandler.saveCookEntity(id, name, company_code, how_to_make, link);
 		
-		CookDto cookDto = new CookDto(cookEntity.getCook_id(), cookEntity.getName(),cookEntity.getCompany_code(),cookEntity.getHow_to_make(),cookEntity.getLink());
+		CookDto cookDto = new CookDto(cookEntity.getId(), cookEntity.getName(),cookEntity.getCompany_code(),cookEntity.getHow_to_make(),cookEntity.getLink());
 		return cookDto;
 	}
 	
 	@Override
-	public CookDto getCook(String cook_id) {
-		CookEntity cookEntity = cookDataHandler.getCookEntity(cook_id);
+	public CookDto getCook(String id) {
+		CookEntity cookEntity = cookDataHandler.getCookEntity(id);
 		
-		CookDto cookDto = new CookDto(cookEntity.getCook_id(), cookEntity.getName(),cookEntity.getCompany_code(),cookEntity.getHow_to_make(),cookEntity.getLink());
+		CookDto cookDto = new CookDto(cookEntity.getId(), cookEntity.getName(),cookEntity.getCompany_code(),cookEntity.getHow_to_make(),cookEntity.getLink());
+		return cookDto;
+	}
+	
+	@Override
+	public CookDto getCookName(String name) {
+		CookEntity cookEntity = cookDataHandler.getCookEntity(name);
+		CookDto cookDto = new CookDto(cookEntity.getId(), cookEntity.getName(),cookEntity.getCompany_code(),cookEntity.getHow_to_make(),cookEntity.getLink());
 		return cookDto;
 	}
 	

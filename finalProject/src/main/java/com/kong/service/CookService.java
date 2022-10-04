@@ -8,4 +8,6 @@ public interface CookService {
 	
 	CookDto getCook(String cook_id);
 	
+	CookDto getCookName(String name);
+	
 }
