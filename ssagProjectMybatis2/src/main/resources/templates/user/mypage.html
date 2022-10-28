@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/header::userHead"></head>
+
+<body>
+	<div th:replace="layout/top::header"></div>
+	<div class="container">
+		<div class="row align-items-start">
+			<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+				<div class="sidebar-sticky">
+					<ul class="nav flex-column">
+						<li class="nav-item">
+							<div style="padding-top:10px;" class="nav flex-column nav-pills"
+								aria-orientation="vertical">
+								<a th:href="@{/}" style="margin:5px;" class="nav-link text-primary">대시보드</a>
+								<a th:href="@{/mypage}" style="margin:5px;" class="nav-link text-primary">마이페이지</a>
+								<a th:href="@{/messages}" style="margin:5px;" class="nav-link active">메시지</a>
+								<a th:href="@{/config}" style="margin:5px;" class="nav-link text-primary">환경설정</a>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</nav>
+			<div style="padding-top:50px;" class="col">
+			<form class="form-horizontal" th:action="@{/update}" method="post">
+				<div class="container text-center">
+					<h1 class="text-primary">여기는 MYPAGE 입니다.</h1>
+					<form th:object="${account}" method="post" action="/mypage">
+						<div> <input type="text" th:value="${account.id}" name="id"></div>
+						<div> <input type="text" th:value="${account.name}" name="name"></div>
+						<div><input type="text" th:value="${account.address}" name="address"></div>
+						<div><input type="text" th:value="${account.telephone}" name="telephone"></div>
+						<div><input type="date" th:value="${account.birth}" name="birth"></div>
+						<div><input type="text" th:value="${account.email}" name="email"></div>
+						<div><input type="text" th:value="${account.password}" name="password"></div>
+						<div><input type="text" th:value="${account.role}" name="role"></div>
+						<div><input type="text" th:value="${account.role}" name="role"></div>
+						
+						<button type="Submit" class="btn btn-dark btn-lg">수정하기</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div th:replace="layout/footer::footer"></div>
+</body>
+
+</html>
