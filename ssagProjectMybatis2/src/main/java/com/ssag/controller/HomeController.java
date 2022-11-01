@@ -8,7 +8,7 @@ public class HomeController {
  
 	
 	@GetMapping(value="/")
-	public String home() throws Exception{
+	public String home2() throws Exception{
 //		System.out.println("LoginUserBean!!"+loginUserBean);
 		return "home";
 	}
