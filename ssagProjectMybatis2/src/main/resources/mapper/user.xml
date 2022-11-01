@@ -27,4 +27,11 @@
 		]]>
 	</insert>
 
+	<select id="readAccount" parameterType="String"
+		resultType="com.ssag.model.UserVo">
+		SELECT * FROM users WHERE ID= #{id}
+	</select>
+
+
 </mapper>
+

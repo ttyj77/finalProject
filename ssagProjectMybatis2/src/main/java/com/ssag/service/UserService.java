@@ -23,5 +23,9 @@ public class UserService {
 		userDao.insertUser(userVo);
 		System.out.println("userService 진입");
 	}
+
+	public UserVo findById(String id) {
+		return userDao.readAccount(id);
+	}
 	
 }

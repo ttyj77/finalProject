@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
 @Component("userVo")
@@ -16,6 +15,7 @@ public class UserVo {
 
 	
 	private Integer code;
+	
 	private String id;
 	private String password;
 	private String role;

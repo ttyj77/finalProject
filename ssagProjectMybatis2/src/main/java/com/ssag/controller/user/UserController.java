@@ -1,18 +1,14 @@
 package com.ssag.controller.user;
 
-import java.time.LocalDate;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ssag.model.UserVo;
 import com.ssag.service.UserService;
+
 
 @Controller("userController")
 //@RestController
@@ -24,10 +20,9 @@ public class UserController {
 
 	@Autowired
 	private UserVo userVo;
-	
-	
-//	@Autowired
-//	private PasswordEncoder passwordEncoder;
+
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 
 	@GetMapping("/index")
@@ -38,34 +33,22 @@ public class UserController {
 	@GetMapping("/users")
 	public String createUser() {
 		System.out.println("여기는 GET Mapping Users");
-		return "register";
+		return "user/login/register";
 	}
 
-	
+
 	
 	@PostMapping("/users")
-	public String addUser(Model model, @RequestParam(value="id") String id,
-	@RequestParam(value="address") String address, @RequestParam(value="password") String password,
-	 @RequestParam(value="email") String email, @RequestParam(value="name") String name, @RequestParam(value="telephone") String telephone, @RequestParam(value="role") String role) {
+	public String addUser(UserVo userVo) {
 		// 소스는 사용자 정보가 담긴 accountDto 객체가 담긴 정보를 entity에 옮겨야 한다.
 
-		userVo.setId(id);
-		userVo.setPassword(password);
-		userVo.setAddress(address);
-		
-		userVo.setEmail(email);
-		userVo.setName(name);
-		userVo.setTelephone(telephone);
-		userVo.setRole(role);
-//		userVo.setBirth(birth);
-		
+		userVo.setPassword(passwordEncoder.encode(userVo.getPassword()));
+
 		userService.addUser(userVo);
 		
-		System.out.println("USerVo =========================================" + userVo.getAddress());
+		System.out.println("USerVo22 =========================================" + userVo.getAddress());
 		
 		return "redirect:/";
 	}
-
-	
 	
 }

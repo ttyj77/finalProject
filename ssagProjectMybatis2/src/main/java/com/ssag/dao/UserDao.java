@@ -11,5 +11,7 @@ import com.ssag.model.UserVo;
 public interface UserDao {
 	
 	public void insertUser(UserVo userVo) throws DataAccessException;
+	UserVo readAccount(String id) throws DataAccessException;
 
+	
 }
