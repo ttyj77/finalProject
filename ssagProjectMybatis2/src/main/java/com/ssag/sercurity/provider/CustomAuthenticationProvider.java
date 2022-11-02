@@ -9,6 +9,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ssag.sercurity.common.FormWebAuthenticationDetails;
 import com.ssag.sercurity.service.AccountContext;
@@ -25,6 +27,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider{
 	
 	//검증을 위한 구현
 	@Override
+	@Transactional
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 		String loginId =  authentication.getName();
 		String password = (String)authentication.getCredentials();

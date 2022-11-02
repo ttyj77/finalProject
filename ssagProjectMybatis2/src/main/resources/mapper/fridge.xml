@@ -20,6 +20,15 @@
 		<result property="group" column="group" />
 	</resultMap>
 
+	<resultMap id='fridge' type="fridgeVo">
+		<result property="owner" column="owner" />
+		<result property="code" column="code" />
+		<result property="name" column="name" />
+	</resultMap>
+
+
+
+
 	<insert id="insertItem" parameterType="fridgeboxVo">
 	<![CDATA[
 			
@@ -30,15 +39,25 @@
 	</insert>
 
 	<select id='ingredientAll' resultMap='ingredient'>
-
 	<![CDATA[
-			
-		select name from ingredient;
-			
+		select * from ingredient;
 		]]>
-
 	</select>
 
-
+	<select id='myfridgeBox' resultMap='fridge'>
+	<![CDATA[
+		select * from fridge where code =#{id};
+		]]>
+	</select>
+	
+	<insert id="insertFridge" parameterType="fridgeVo">
+	<![CDATA[
+			
+			insert into fridgebox(owner,name)
+			value(#{owner},#{name});
+			
+		]]>
+	</insert>
+	
 
 </mapper>

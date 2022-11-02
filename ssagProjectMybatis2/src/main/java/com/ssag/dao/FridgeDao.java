@@ -8,6 +8,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
 import com.ssag.model.FridgeBoxVo;
+import com.ssag.model.FridgeVo;
 import com.ssag.model.IngredientVo;
 
 @Mapper
@@ -16,6 +17,8 @@ public interface FridgeDao {
 	
 	public void insertItem(FridgeBoxVo fridgeBoxVo) throws DataAccessException;
 	public List<IngredientVo> ingredientAll() throws DataAccessException;
-	public Map<String, Object> ingredientAll2() throws DataAccessException;
+//	public Map<String, Object> ingredientAll2() throws DataAccessException;
+	public List<FridgeVo> myfridgeBox() throws DataAccessException;
+	public void insertFridge(FridgeVo fiFridgeVo) throws DataAccessException;
 	
 }

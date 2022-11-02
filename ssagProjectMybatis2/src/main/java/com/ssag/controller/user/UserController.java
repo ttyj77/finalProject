@@ -41,13 +41,9 @@ public class UserController {
 	@PostMapping("/users")
 	public String addUser(UserVo userVo) {
 		// 소스는 사용자 정보가 담긴 accountDto 객체가 담긴 정보를 entity에 옮겨야 한다.
-
 		userVo.setPassword(passwordEncoder.encode(userVo.getPassword()));
-
 		userService.addUser(userVo);
-		
 		System.out.println("USerVo22 =========================================" + userVo.getAddress());
-		
 		return "redirect:/";
 	}
 	

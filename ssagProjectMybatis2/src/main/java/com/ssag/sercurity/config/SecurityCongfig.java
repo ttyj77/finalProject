@@ -32,11 +32,12 @@ public class SecurityCongfig extends WebSecurityConfigurerAdapter{
 //	}
 //	
 	@Override
-	protected void configure(HttpSecurity http) throws Exception {
+	protected void configure(HttpSecurity http) throws Exception { 
 
 		http.authorizeRequests()
-				.antMatchers("/","/users","/index","/ingredientList")
+				.antMatchers("/","/users","/index","/ingredientList","/myFridgeBox")
 				.permitAll()
+				.antMatchers("/css/**","/js/**","/image/**").permitAll()
 				.antMatchers("/mypage").hasRole("USER")
 				.antMatchers("/messages").hasRole("MANAGER")
 				.antMatchers("/config").hasAnyRole("ADMIN","1")

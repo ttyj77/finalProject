@@ -11,7 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ssag.dao.FridgeDao;
 import com.ssag.model.FridgeBoxVo;
+import com.ssag.model.FridgeVo;
 import com.ssag.model.IngredientVo;
+import com.ssag.model.UserVo;
 
 import lombok.RequiredArgsConstructor;
 
@@ -34,30 +36,34 @@ public class FridgeService{
 		System.out.println("fridgeDao==========================:  " + fridgeDao);
 	}
 
-	
-	
-	
-	public List<String> ingredientAll(){
+	@Transactional
+	public List<IngredientVo> ingredientAll(){
 		System.out.println("여기는 FridgeService");
 		List<IngredientVo> ingredientList = fridgeDao.ingredientAll();
-//		List<String> name = new ArrayList<String>();
-//		System.out.println("IngredientList Service" + ingredientList);
-		ArrayList<String> ingredientList2 = new ArrayList<String>();
+		
+		ArrayList<IngredientVo> ingredientList2 = new ArrayList<IngredientVo>();
 		for (int i = 0; i < ingredientList.size(); i++) {
-//			ingredientList2.add(ingredientList.get(i));
-			ingredientList2.add(ingredientList.get(i).getName());
-//			System.out.println(ingredientList2);
+			ingredientList2.add(ingredientList.get(i));
 		}
 		return ingredientList2;
 	} 
 	
+	@Transactional
+	public List<String> myFridgeBox(FridgeVo fridgeVo) {
+		System.out.println("fridgeService MyfridgeBox!!!");
+		List<FridgeVo> fridgeInfo = fridgeDao.myfridgeBox();
+		List<String> fridgeInfoName = new ArrayList<String>();
+		fridgeInfoName.add(fridgeInfo.get(1).getName());
+		return fridgeInfoName;
+		
+	}
 	
+	public void addFridge(FridgeVo fiFridgeVo) {
+		fridgeDao.insertFridge(fiFridgeVo);
+		System.out.println("FridgeService AddFridge 진입");
+	}
 
-//	public Map<String, Object> ingredientAll2(String name) {
-//
-//		Map<String, Object> ingredientList2 = fridgeDao.ingredientAll2();
-//		return ingredientList2;
-//	}
-
+//	public List<> myFridgeList(UserVo userVo, FridgeVo fridgeVo)
+	
 	
 }

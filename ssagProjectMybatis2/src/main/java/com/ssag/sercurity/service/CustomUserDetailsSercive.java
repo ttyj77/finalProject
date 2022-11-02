@@ -30,18 +30,24 @@ public class CustomUserDetailsSercive implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String id) throws UsernameNotFoundException {
 		
-		UserVo userVo = userService.findById(id);
-		System.out.println("USerDetailsService FindByID "+userVo);
+//		UserVo userVo = userService.findById(id);
+		UserVo op = userService.findById(id);
+		
+		System.out.println("USerDetailsService FindByID "+op);
 //		Account account = userRepository.findById(id);
 		
-		if(userVo == null) {
+		if(op == null) {
 			throw new UsernameNotFoundException("UsernameNotFoundException");
 		}
 		
 		List<GrantedAuthority> roles = new ArrayList<>();
-		roles.add(new SimpleGrantedAuthority(userVo.getRole()));
+		roles.add(new SimpleGrantedAuthority(op.getRole()));
 		
-		AccountContext accountContext = new  AccountContext(userVo, roles);
+		AccountContext accountContext = new  AccountContext(op, roles);
+//		accountContext.getUserVo();
+		
+		System.out.println("이렇게 하면 accountContext에 뭐가 담길까" + accountContext.getUserVo().getName());
+		System.out.println("USerDetailsService FindByID "+op.getName());
 		
 		return accountContext;
 	}
