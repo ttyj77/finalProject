@@ -34,10 +34,10 @@
 										<option th:each="m:${ingredientList3}" th:value="${m.code}" th:text="${m.name}">
 										</option>
 									</select>
-<!--									<select id="ingredientList3" class="col-sm-10" size="1" name="code">-->
-<!--										<option th:each="m:${ingredientList3}" th:value="${m.code}" th:text="${m.code}">-->
-<!--										</option>-->
-<!--									</select>-->
+									<!--									<select id="ingredientList3" class="col-sm-10" size="1" name="code">-->
+									<!--										<option th:each="m:${ingredientList3}" th:value="${m.code}" th:text="${m.code}">-->
+									<!--										</option>-->
+									<!--									</select>-->
 								</tbody>
 							</div>
 
@@ -72,6 +72,12 @@
 							<div class="col-sm-offset-1 col-sm-10">
 								<button type="Submit" class="btn btn-dark btn-lg">등록하기</button>
 							</div>
+						</div>
+						<div class="col-6 col-md-4">
+							<p th:text="${username}+'님로그인 완료 !!!'"></p>
+							<form action="/logout">
+								<button type="submit" class="btn btn-primary" id="logoutBtn">LogOut</button>
+							</form>
 						</div>
 					</div>
 				</form>

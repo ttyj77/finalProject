@@ -46,9 +46,9 @@ public class SecurityCongfig extends WebSecurityConfigurerAdapter{
 			.and()
 				.formLogin()
 				.loginPage("/login")
-				.loginProcessingUrl("/login_proc")
+				.loginProcessingUrl("/login")
 				.authenticationDetailsSource(authenticationDetailsSource)
-				.defaultSuccessUrl("/")
+				.defaultSuccessUrl("/login")
 				.permitAll();
 
 	}

@@ -10,7 +10,7 @@ public class HomeController {
 	@GetMapping(value="/")
 	public String home() throws Exception{
 //		System.out.println("LoginUserBean!!"+loginUserBean);
-		return "home";
+		return "index";
 	}
 	
 

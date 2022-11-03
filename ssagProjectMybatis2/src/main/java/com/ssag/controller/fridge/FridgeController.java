@@ -6,20 +6,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ssag.model.FridgeBoxVo;
 import com.ssag.model.IngredientVo;
-import com.ssag.sercurity.service.AccountContext;
+import com.ssag.model.UserVo;
 import com.ssag.service.FridgeService;
 import com.ssag.service.UserService;
 
@@ -31,7 +29,7 @@ public class FridgeController {
 
 	@Autowired
 	private UserService userService;
-	
+
 	@Autowired
 	private FridgeBoxVo fridgeBoxVo;
 
@@ -60,11 +58,15 @@ public class FridgeController {
 	}
 
 	@GetMapping("/fridgeBox")
-	public String writeArticle(Model model) {
+	public String writeArticle(UserVo userVo, Model model, HttpServletRequest request) {
 		System.out.println("여기는 controller : fridgeBox ");
 		List<IngredientVo> ingredientList3 = fridgeService.ingredientAll();
 //		model.addAttribute(ingredientList3);
 		model.addAttribute("ingredientList3", ingredientList3);
+		String username = (String) request.getSession().getAttribute("username");
+		model.addAttribute("username", userVo.getId());
+		
+		System.out.println(userVo.getId());
 		return "user/fridge/index";
 	}
 
@@ -82,7 +84,7 @@ public class FridgeController {
 		System.out.println("Fridge Contrller MyFridgeBox 진입!!!");
 		return "redirect:/";
 	}
-	
+
 //	@GetMapping("/testId")
 //	@ResponseBody
 //	public String UserName(CustomUserDetailsSercive userDetailsSercive) {
@@ -102,17 +104,29 @@ public class FridgeController {
 //		
 //		return "hello";
 //	}
-	
-	
-	@GetMapping("/test")
-	public String test(@AuthenticationPrincipal Authentication authentication, ModelMap map) {
-		System.out.println("여기는 들어오나?");
-		AccountContext accountContext = (AccountContext) authentication.getPrincipal();
-		System.out.println("여기는 들어오나?22"+ accountContext);
-		map.addAttribute("user", accountContext);
-		System.out.println("AccountContext : " + accountContext.getUserVo().getId());
-		
-		return"main";
-	}
+//	
+//	
+//	@GetMapping("/test")
+//	public String test(@AuthenticationPrincipal Authentication authentication, ModelMap map) {
+//		System.out.println("여기는 들어오나?");
+//		AccountContext accountContext = (AccountContext) authentication.getPrincipal();
+//		System.out.println("여기는 들어오나?22"+ accountContext);
+//		map.addAttribute("user", accountContext);
+//		System.out.println("AccountContext : " + accountContext.getUserVo().getId());
+//		
+//		return"main";
+//	}
+
+//	@GetMapping("/test")
+//	public String test(UserVo userVo, HttpServletResponse response, HttpSession session,HttpServletRequest request) {
+//	
+//		session = request.getSession();
+//		String id = (String)session.getAttribute("id");
+//		System.out.println("세션에 저장된 id : " + id);
+//
+//		
+//		return null;
+//		
+//	}
 
 }
