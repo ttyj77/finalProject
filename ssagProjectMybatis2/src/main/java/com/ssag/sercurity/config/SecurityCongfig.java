@@ -37,7 +37,7 @@ public class SecurityCongfig extends WebSecurityConfigurerAdapter{
 		http.authorizeRequests()
 				.antMatchers("/","/users","/index","/ingredientList","/myFridgeBox")
 				.permitAll()
-				.antMatchers("/css/**","/js/**","/image/**").permitAll()
+				.antMatchers("/css/**","/js/**","/image/**", "/fonts/**").permitAll()
 				.antMatchers("/mypage").hasRole("USER")
 				.antMatchers("/messages").hasRole("MANAGER")
 				.antMatchers("/config").hasAnyRole("ADMIN","1")
@@ -48,7 +48,7 @@ public class SecurityCongfig extends WebSecurityConfigurerAdapter{
 				.loginPage("/login")
 				.loginProcessingUrl("/login")
 				.authenticationDetailsSource(authenticationDetailsSource)
-				.defaultSuccessUrl("/login")
+				.defaultSuccessUrl("/afterLogin")
 				.permitAll();
 
 	}

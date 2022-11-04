@@ -1,14 +1,17 @@
 package com.ssag.controller.login;
 
-import javax.servlet.http.Cookie;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +19,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.ssag.model.UserVo;
+import com.ssag.sercurity.service.AccountContext;
 import com.ssag.sercurity.service.CustomUserDetailsSercive;
+import com.ssag.service.UserService;
 
 @Controller
 public class LoginController {
@@ -25,33 +30,31 @@ public class LoginController {
 	UserVo userVo;
 	@Autowired
 	CustomUserDetailsSercive customUserDetailsSercive;
+ 
+	@Autowired
+	UserService userService;
 
+
+	
 	@GetMapping("/login")
 	public String login(HttpServletRequest request, Model model) {
-		String username = (String) request.getSession().getAttribute("username");
-		model.addAttribute("username", username);
+
 		return "login";
 	}
 
 	// 세션 저장 (세션 ID, 사용자 정보)
-	// 세션은 브라우저 당 1개 생성(시크릿 모드도 동일, 같은 브라우저에서 새탭 or 새창 띄워도 로그인 유지) / 쿠키는 시크릿 모드시 없어짐
+//	// 세션은 브라우저 당 1개 생성(시크릿 모드도 동일, 같은 브라우저에서 새탭 or 새창 띄워도 로그인 유지) / 쿠키는 시크릿 모드시 없어짐
 	@PostMapping("/login")
-	public String login(UserVo userVo, Model model, HttpServletRequest request, HttpSession session,
-			HttpServletResponse response) {
+	public HttpSession login(HttpSession session, HttpServletRequest request, String username, String password,UserVo userVo) {
 
-		request.getSession().setAttribute("username", userVo.getId());
-		// 쿠키 전달 (세션 ID)
-		response.addCookie(new Cookie("AUTH", request.getSession().getId()) {
-			{
-				setMaxAge(60);
-				setPath("/");
-			}
-		});
+		session = request.getSession(false);
+		session.setAttribute("username", userVo.getId());
+		session.setAttribute("userAddress", userVo.getAddress());
+		String sessionId = session.getId();
+		System.out.println("이건 Controller 의 session : " + session);
+		
+		return session;
 
-		model.addAttribute("username", userVo.getId());
-
-		System.out.println("controller session : " + model);
-		return null;
 	}
 
 	// 인증을 받은 사용자가 로그아웃가능 로그아웃은 SecurityContextLogoutHandler이친구가 진행함
@@ -66,22 +69,33 @@ public class LoginController {
 		}
 		return "redirect:/login";
 	}
+	
+	
+	@GetMapping("/afterLogin")
+	public String afterLogin() {
+		
+		return "afterlogin";
+	}
 
 	@GetMapping(value = "/denied")
-	public String accessDenied(CustomUserDetailsSercive detailsSercive, String id) throws Exception {
-//		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//		authentication = SecurityContextHolder.getContext().getAuthentication();
-//		if (principal instanceof UserDetails) {
-//			  String username = ((UserDetails)principal).getUsername();
-//			} else {
-//			  String username = principal.toString();
-//			}
+	public String accessDenied(UserVo userVo, CustomUserDetailsSercive detailsSercive, String username, HttpSession session,Model model)
+			throws Exception {
 		
-		UserDetails username = detailsSercive.loadUserByUsername(id);
-		
-//		System.out.println("USErName : " + authentication.getName());
-		System.out.println(username);
-		return "home";
+		String id = (String) session.getAttribute("username");
+		String address = (String) session.getAttribute("userAddress");
+		System.out.println("ID가 없나???: " + id);
+		System.out.println("ID가 없나???222: " + address);
+		userVo = userService.findById(id);
+		model.addAttribute("member", userVo);
+		String sessionId = session.getId();
+		long sesstionTime = session.getCreationTime();
+		boolean sessionNew = session.isNew();
+		System.out.println(sessionId);
+		System.out.println(sesstionTime);
+		System.out.println(sessionNew);
+		System.out.println(model);
+		return null;
+
 	}
 
 }

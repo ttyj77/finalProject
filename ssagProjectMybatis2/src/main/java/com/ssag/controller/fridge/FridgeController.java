@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -58,16 +59,20 @@ public class FridgeController {
 	}
 
 	@GetMapping("/fridgeBox")
-	public String writeArticle(UserVo userVo, Model model, HttpServletRequest request) {
+	public String writeArticle(UserVo userVo, Model model, HttpServletRequest request,String username, HttpSession session) {
 		System.out.println("여기는 controller : fridgeBox ");
 		List<IngredientVo> ingredientList3 = fridgeService.ingredientAll();
-//		model.addAttribute(ingredientList3);
+		model.addAttribute(ingredientList3);
 		model.addAttribute("ingredientList3", ingredientList3);
-		String username = (String) request.getSession().getAttribute("username");
-		model.addAttribute("username", userVo.getId());
-		
-		System.out.println(userVo.getId());
-		return "user/fridge/index";
+//		String username = (String) request.getSession().getAttribute("username");
+//		model.addAttribute("username", userVo.getId());
+
+		String id = (String) session.getAttribute("username");
+		userVo = userService.findById(id);
+		model.addAttribute("member", userVo);
+
+//		System.out.println(userVo.getId());
+		return "fridgeBox";
 	}
 
 //	@GetMapping("/myFridgeBox")
@@ -76,7 +81,7 @@ public class FridgeController {
 //		
 //		List<String> result = fridgeService.myFridgeBox(fridgeVo); 
 //		
-//		return "user/fridge/myFridgeBox";
+//		return "myFridgeBox";
 //}
 
 	@PostMapping("/myFridgeBox")

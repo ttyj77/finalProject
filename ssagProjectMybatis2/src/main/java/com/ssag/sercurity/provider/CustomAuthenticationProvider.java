@@ -58,6 +58,9 @@ public class CustomAuthenticationProvider implements AuthenticationProvider{
 		//여기ㄱ까지오면 로그인 성공이다.																								                            //pasword = null
 		UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(accountContext.getUserVo(),null, accountContext.getAuthorities());
 		
+		
+		
+		
 		return authenticationToken;
 	}
 	
