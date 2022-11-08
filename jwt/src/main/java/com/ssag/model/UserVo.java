@@ -28,7 +28,7 @@ public class UserVo {
 	private String address;
 	private Integer companycode;
 	private String companyname;
-	private Integer frigeidid;
+	private Integer fridgecode;
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate birth;
@@ -126,13 +126,7 @@ public class UserVo {
 		this.companyname = companyname;
 	}
 
-	public Integer getFrigeidid() {
-		return frigeidid;
-	}
 
-	public void setFrigeidid(Integer frigeidid) {
-		this.frigeidid = frigeidid;
-	}
 
 	public LocalDate getBirth() {
 		return birth;
@@ -154,8 +148,22 @@ public class UserVo {
 	public String toString() {
 		return "UserVo [code=" + code + ", username=" + username + ", password=" + password + ", role=" + role
 				+ ", name=" + name + ", email=" + email + ", telephone=" + telephone + ", address=" + address
-				+ ", companycode=" + companycode + ", companyname=" + companyname + ", frigeidid=" + frigeidid
+				+ ", companycode=" + companycode + ", companyname=" + companyname + ", fridgecode=" + fridgecode
 				+ ", birth=" + birth + ", userLogin=" + userLogin + "]";
+	}
+
+	/**
+	 * @return the fridgecode
+	 */
+	public Integer getFridgecode() {
+		return fridgecode;
+	}
+
+	/**
+	 * @param fridgecode the fridgecode to set
+	 */
+	public void setFridgecode(Integer fridgecode) {
+		this.fridgecode = fridgecode;
 	}
 	
 	

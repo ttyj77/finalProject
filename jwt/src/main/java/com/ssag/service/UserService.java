@@ -24,6 +24,11 @@ public class UserService {
 		System.out.println("userService 진입");
 	}
 
+	public void addUserFridgeCode(Integer fridgecode, Integer code) {
+		userDao.insertUserFridgeCode(fridgecode, code);
+		System.out.println("userService : fridgecode주입 진입");
+	}
+	
 	public UserVo findById(String username) {
 		return userDao.findByUsername(username);
 	}

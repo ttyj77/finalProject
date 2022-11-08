@@ -27,15 +27,23 @@
 		]]>
 	</insert>
 
+	<update id="insertUserFridgeCode" parameterType="userVo">
+		<![CDATA[
+			update users set fridgecode=#{fridgecode}
+			where code=#{code};
+		]]>
+	</update>
+
+
 	<select id="findByUsername" parameterType="String"
 		resultType="com.ssag.model.UserVo">
 		SELECT * FROM users WHERE username=#{username};
 	</select>
-	
-<!-- 	<select id="getUserById" parameterType="String" -->
-<!-- 		resultType="com.ssag.sercurity.service.CustomUserDetails"> -->
-<!-- 		SELECT * FROM users WHERE username= #{username} -->
-<!-- 	</select> -->
+
+	<!-- <select id="getUserById" parameterType="String" -->
+	<!-- resultType="com.ssag.sercurity.service.CustomUserDetails"> -->
+	<!-- SELECT * FROM users WHERE username= #{username} -->
+	<!-- </select> -->
 
 </mapper>
 
