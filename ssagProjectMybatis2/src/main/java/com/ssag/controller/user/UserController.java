@@ -6,6 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -58,6 +60,14 @@ public class UserController {
 		String username = principal.getName();
 		System.out.println("SEssion Username : " + username);
 		return "redirect:/";
+	}
+	
+	
+	@GetMapping("/index222")
+	public void index(Authentication authentication) {
+	    UserDetails userDetails = (UserDetails)authentication.getPrincipal();
+	    System.out.println("Controller Userdetails username = " + userDetails.getUsername());
+//	    System.out.println("role = " + userDetails.getAuthorities().stream().map(r -> String.valueOf(r)).collect(Collectors.joining(",")));
 	}
 	
 }

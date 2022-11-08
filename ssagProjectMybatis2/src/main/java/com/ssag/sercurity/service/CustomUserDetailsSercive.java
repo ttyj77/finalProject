@@ -32,28 +32,39 @@ public class CustomUserDetailsSercive implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String id) throws UsernameNotFoundException {
 
-//		UserVo userVo = userService.findById(id);
-		UserVo op = userService.findById(id);
-
-		System.out.println("USerDetailsService FindByID " + op);
+		UserVo userVo = userService.findById(id);
+//		UserVo op = userService.findById(id);
+//		CustomUserDetails userDetails = userService.getUserById(id);
+		
+//		System.out.println("USerDetailsService FindByID " + op);
 //		Account account = userRepository.findById(id);
 
-		if (op == null) {
+		if (userVo == null) {
 			throw new UsernameNotFoundException("UsernameNotFoundException");
 		}
 
 		List<GrantedAuthority> roles = new ArrayList<>();
-		roles.add(new SimpleGrantedAuthority(op.getRole()));
+		roles.add(new SimpleGrantedAuthority(userVo.getRole()));
 
-		AccountContext accountContext = new AccountContext(op, roles);
+		AccountContext accountContext = new AccountContext(userVo, roles);
+//		AccountContext accountContext = new AccountContext(userDetails);
 //		accountContext.getUserVo();
 
 		System.out.println("이렇게 하면 accountContext에 뭐가 담길까" + accountContext.getUserVo().getName());
-		System.out.println("USerDetailsService FindByID " + op.getName());
-		System.out.println("USerDetailsService FindByID " + op.getId());
+//		System.out.println("USerDetailsService FindByID " + op.getName());
+//		System.out.println("USerDetailsService FindByID " + op.getId());
+		
+//		System.out.println("CustomUsrDeatils " + userDetails.getUsername());
+//		System.out.println("CustomUsrDeatils " + userDetails.getAuthorities());
+//		System.out.println("CustomUsrDeatils " + userDetails.getName());
 
-
+		System.out.println("AccountContext Type"+accountContext.getClass().getName());
+		System.out.println("AccountContext Type"+accountContext.getUserDetails().getName());
+		
 		return accountContext;
 	}
+
+
+
 
 }

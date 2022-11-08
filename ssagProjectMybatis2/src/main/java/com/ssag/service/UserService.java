@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.google.common.base.Optional;
 import com.ssag.dao.UserDao;
 import com.ssag.model.UserVo;
+import com.ssag.sercurity.service.CustomUserDetails;
 
 @Service("userService")
 @Transactional
@@ -28,5 +29,11 @@ public class UserService {
 	public UserVo findById(String id) {
 		return userDao.readAccount(id);
 	}
+	
+	public CustomUserDetails getUserById(String id) {
+		return userDao.getUserById(id);
+	}
+	
+	
 	
 }

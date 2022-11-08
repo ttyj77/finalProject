@@ -31,7 +31,11 @@
 		resultType="com.ssag.model.UserVo">
 		SELECT * FROM users WHERE ID= #{id}
 	</select>
-
+	
+	<select id="getUserById" parameterType="String"
+		resultType="com.ssag.sercurity.service.CustomUserDetails">
+		SELECT * FROM users WHERE ID= #{id}
+	</select>
 
 </mapper>
 
