@@ -41,34 +41,25 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 	@Override
 	public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
 			throws AuthenticationException {
-		System.out.println("JwtAuthenticationFilter : 로그인 시도중");
-		// TODO Auto-generated method stub
 
-		// 1. username, password 받아서
+		System.out.println("JwtAuthenticationFilter : 진입");
 
+		// request에 있는 username과 password를 파싱해서 자바 Object로 받기
 		ObjectMapper om = new ObjectMapper();
-		UserVo loginRequestVo = null;
+		UserVo loginRequestDto = null;
 		try {
-//			BufferedReader br = request.getReader();
-//			String input = null;
-//			while((input = br.readLine()) !=null) {
-//				System.out.println(input);
-//			}
-//			System.out.println(request.getInputStream().toString());
-
-			loginRequestVo = om.readValue(request.getInputStream(), UserVo.class);
-			System.out.println(loginRequestVo);
-
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			loginRequestDto = om.readValue(request.getInputStream(), UserVo.class);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		System.out.println("=========================================================================");
+		System.out.println("JwtAuthenticationFilter : " + loginRequestDto);
 
+		// 유저네임패스워드 토큰 생성
 		UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
-				loginRequestVo.getUsername(), loginRequestVo.getPassword());
+				loginRequestDto.getUsername(), loginRequestDto.getPassword());
 
+		System.out.println("JwtAuthenticationFilter : 토큰생성완료");
 		// authenticate() 함수가 호출 되면 인증 프로바이더가 유저 디테일 서비스의
 		// loadUserByUsername(토큰의 첫번째 파라메터) 를 호출하고
 		// UserDetails를 리턴받아서 토큰의 두번째 파라메터(credential)과
@@ -81,11 +72,9 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 		// principalDetailsService의 loadUserByUsername() 함수가 실행 된 후 정상이면 authentication이
 		// 리턴됨
 		Authentication authentication = authenticationManager.authenticate(authenticationToken);
-		// =>로그인이 되었다는 뜻
+
 		PrincipalDetails principalDetailis = (PrincipalDetails) authentication.getPrincipal();
 		System.out.println("Authentication : " + principalDetailis.getUserVo().getUsername());
-		System.out.println("1==============================================");
-		// Authentication 객체가 session영역에 저장됨
 		return authentication;
 	}
 
@@ -93,23 +82,18 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 	@Override
 	protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain,
 			Authentication authResult) throws IOException, ServletException {
-
-		System.out.println("successfulAuthentication이 실행 됨 : 인증이 완료되었다는 뜻");
+		
 		PrincipalDetails principalDetailis = (PrincipalDetails) authResult.getPrincipal();
-
-		//RSA방식은 아니고 Hash암호방식
+		
 		String jwtToken = JWT.create()
-				.withSubject("cos토큰")
-				.withExpiresAt(new Date(System.currentTimeMillis()+(6000*10))) //1분 *10
-				.withClaim("code", principalDetailis.getUserVo().getCode())
+				.withSubject(principalDetailis.getUsername())
+				.withExpiresAt(new Date(System.currentTimeMillis()+(6000*20)))
+				.withClaim("id", principalDetailis.getUserVo().getUsername())
 				.withClaim("username", principalDetailis.getUserVo().getUsername())
 				.sign(Algorithm.HMAC512("cos"));
-
+		
 		response.addHeader("Authorization", "Bearer "+jwtToken);
-
+		System.out.println("JWT token?? : " + jwtToken);
+		System.out.println(response.getHeader("Authorization"));
 	}
-	// 2. 정상인지 로그인 시도를 해보는 거에요 authenticationManager로 로그인 시도를 하면 !!!1
-	// PrincipalDetailsService 가 호출이 된다. -> loadUserByUsername 이 실행된다.
-	// 3.Principal Details를 세션에 담고 (이걸 안담으면 권한 관리가 안됨)
-	// 4. JWT토큰을 만들어서 응답해주면 됨
 }

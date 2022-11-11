@@ -2,27 +2,28 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<meta charset="utf-8" />
-	<meta http-equiv="x-ua-compatible" content="ie=edge" />
-	<title>Login - ClassiGrids Classified Ads and Listing Website Template</title>
-	<meta name="description" content="" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<!--	<link rel="shortcut icon" type="image/x-icon" href="images/123.html" />-->
-	<!-- Place favicon.ico in the root directory -->
+<meta charset="utf-8" />
+<meta http-equiv="x-ua-compatible" content="ie=edge" />
+<title>Login - ClassiGrids Classified Ads and Listing Website
+	Template</title>
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!--	<link rel="shortcut icon" type="image/x-icon" href="images/123.html" />-->
+<!-- Place favicon.ico in the root directory -->
 
-	<!-- Web Font -->
-	<!--	<link-->
-	<!--		href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"-->
-	<!--		rel="stylesheet">-->
-	<!--	<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">-->
+<!-- Web Font -->
+<!--	<link-->
+<!--		href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"-->
+<!--		rel="stylesheet">-->
+<!--	<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">-->
 
-	<!-- ========================= CSS here ========================= -->
-	<link rel="stylesheet" href="css/bootstrap.min.css" />
-	<link rel="stylesheet" href="css/LineIcons.2.0.css" />
-	<link rel="stylesheet" href="css/animate.css" />
-	<link rel="stylesheet" href="css/tiny-slider.css" />
-	<link rel="stylesheet" href="css/glightbox.min.css" />
-	<link rel="stylesheet" href="css/main.css" />
+<!-- ========================= CSS here ========================= -->
+<link rel="stylesheet" href="css/bootstrap.min.css" />
+<link rel="stylesheet" href="css/LineIcons.2.0.css" />
+<link rel="stylesheet" href="css/animate.css" />
+<link rel="stylesheet" href="css/tiny-slider.css" />
+<link rel="stylesheet" href="css/glightbox.min.css" />
+<link rel="stylesheet" href="css/main.css" />
 
 </head>
 
@@ -151,7 +152,7 @@
 						<!--										</ul>-->
 						<!--									</li>-->
 						<!--								</ul>-->
-						<!--							</div> <!-- navbar collapse -->-->
+						<!--							</div>  navbar collapse -->
 						<!--							<div class="login-button">-->
 						<!--								<ul>-->
 						<!--									<li>-->
@@ -165,11 +166,12 @@
 						<!--							<div class="button header-button">-->
 						<!--								<a href="post-item.html" class="btn">Post an Ad</a>-->
 						<!--							</div>-->
-						<!--						</nav> <!-- navbar -->-->
+						<!--						</nav> navbar -->
 						<!--					</div>-->
 						<!--				</div>-->
-						<!--			</div> <!-- row -->-->
-					</div> <!-- container -->
+						<!--			</div> row -->
+					</div>
+					<!-- container -->
 	</header>
 	<!-- End Header Area -->
 
@@ -200,45 +202,50 @@
 				<div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-12">
 					<div class="form-head">
 						<h4 class="title">Login</h4>
-						<form th:action="@{/login}" class="form-signin" method="post">
+						<!-- th:action="@{/login}" method="post" 아래에서 잠시 빼놓은거 -->
+						<form id="submit-form" class="form-signin">
+							<!-- <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" /> -->
 							<div class="form-group">
-								<label>ID</label>
-								<input name="username" id="username" type="text"	required="required">
+								<label>ID</label> <input name="username" id="username"
+									type="text" required="required">
 							</div>
 							<div class="form-group">
-								<label>Password</label>
-								<input name="password" type="password">
+								<label>Password</label> <input name="password" id="password"
+									type="password">
 							</div>
 							<div class="check-and-pass">
 								<div class="row align-items-center">
 									<div class="col-lg-6 col-md-6 col-12">
 										<div class="form-check">
-											<input type="checkbox" class="form-check-input width-auto" id="exampleCheck1">
-											<label class="form-check-label">Remember me</label>
+											<input type="checkbox" class="form-check-input width-auto"
+												id="exampleCheck1"> <label class="form-check-label">Remember
+												me</label>
 										</div>
 									</div>
 									<div class="col-lg-6 col-md-6 col-12">
-										<a href="javascript:void(0)" class="lost-pass">Lost your password?</a>
+										<a href="javascript:void(0)" class="lost-pass">Lost your
+											password?</a>
 									</div>
 								</div>
 							</div>
 							<div class="button">
-								<button type="submit" class="btn">Login Now</button>
+								<button type="submit" class="btn" id="loginBtn">Login
+									Now</button>
 							</div>
 							<div class="alt-option">
 								<span>Or</span>
 							</div>
 							<div class="socila-login">
 								<ul>
-									<li><a href="javascript:void(0)" class="facebook"><i class="lni lni-facebook-original"></i>Login With
-											Facebook</a></li>
-									<li><a href="javascript:void(0)" class="google"><i class="lni lni-google"></i>Login
-											With Google
-											Plus</a>
-									</li>
+									<li><a href="javascript:void(0)" class="facebook"><i
+											class="lni lni-facebook-original"></i>Login With Facebook</a></li>
+									<li><a href="javascript:void(0)" class="google"><i
+											class="lni lni-google"></i>Login With Google Plus</a></li>
 								</ul>
 							</div>
-							<p class="outer-link">Don't have an account? <a href="registration.html">Register here</a>
+							<p class="outer-link">
+								Don't have an account? <a href="registration.html">Register
+									here</a>
 							</p>
 						</form>
 					</div>
@@ -248,162 +255,20 @@
 	</section>
 	<!-- end login section -->
 
-	<!--	<!-- Start Newsletter Area -->-->
-	<!--	<div class="newsletter section">-->
-	<!--		<div class="container">-->
-	<!--			<div class="inner-content">-->
-	<!--				<div class="row align-items-center">-->
-	<!--					<div class="col-lg-6 col-md-6 col-12">-->
-	<!--						<div class="title">-->
-	<!--							<i class="lni lni-alarm"></i>-->
-	<!--							<h2>Newsletter</h2>-->
-	<!--							<p>We don't send spam so don't worry.</p>-->
-	<!--						</div>-->
-	<!--					</div>-->
-	<!--					<div class="col-lg-6 col-md-6 col-12">-->
-	<!--						<div class="form">-->
-	<!--							<form action="#" method="get" target="_blank" class="newsletter-form">-->
-	<!--								<input name="EMAIL" placeholder="Your email address" type="email">-->
-	<!--								<div class="button">-->
-	<!--									<button class="btn">Subscribe<span class="dir-part"></span></button>-->
-	<!--								</div>-->
-	<!--							</form>-->
-	<!--						</div>-->
-	<!--					</div>-->
-	<!--				</div>-->
-	<!--			</div>-->
-	<!--		</div>-->
-	<!--	</div>-->
-	<!--	<!-- End Newsletter Area -->-->
 
-	<!-- Start Footer Area -->
-	<!--	<footer class="footer">-->
-	<!--		<!-- Start Footer Top -->-->
-	<!--		<div class="footer-top">-->
-	<!--			<div class="container">-->
-	<!--				<div class="row">-->
-	<!--					<div class="col-lg-3 col-md-6 col-12">-->
-	<!--						<!-- Single Widget -->-->
-	<!--						<div class="single-footer mobile-app">-->
-	<!--							<h3>Mobile Apps</h3>-->
-	<!--							<div class="app-button">-->
-	<!--								<a href="javascript:void(0)" class="btn">-->
-	<!--									<i class="lni lni-play-store"></i>-->
-	<!--									<span class="text">-->
-	<!--										<span class="small-text">Get It On</span>-->
-	<!--										Google Play-->
-	<!--									</span>-->
-	<!--								</a>-->
-	<!--								<a href="javascript:void(0)" class="btn">-->
-	<!--									<i class="lni lni-apple"></i>-->
-	<!--									<span class="text">-->
-	<!--										<span class="small-text">Get It On</span>-->
-	<!--										App Store-->
-	<!--									</span>-->
-	<!--								</a>-->
-	<!--							</div>-->
-	<!--						</div>-->
-	<!--						<!-- End Single Widget -->-->
-	<!--					</div>-->
-	<!--					<div class="col-lg-3 col-md-6 col-12">-->
-	<!--						<!-- Single Widget -->-->
-	<!--						<div class="single-footer f-link">-->
-	<!--							<h3>Locations</h3>-->
-	<!--							<div class="row">-->
-	<!--								<div class="col-lg-6 col-md-6 col-12">-->
-	<!--									<ul>-->
-	<!--										<li><a href="javascript:void(0)">Chicago</a></li>-->
-	<!--										<li><a href="javascript:void(0)">New York City</a></li>-->
-	<!--										<li><a href="javascript:void(0)">San Francisco</a></li>-->
-	<!--										<li><a href="javascript:void(0)">Washington</a></li>-->
-	<!--										<li><a href="javascript:void(0)">Boston</a></li>-->
-	<!--									</ul>-->
-	<!--								</div>-->
-	<!--								<div class="col-lg-6 col-md-6 col-12">-->
-	<!--									<ul>-->
-	<!--										<li><a href="javascript:void(0)">Los Angeles</a></li>-->
-	<!--										<li><a href="javascript:void(0)">Seattle</a></li>-->
-	<!--										<li><a href="javascript:void(0)">Las Vegas</a></li>-->
-	<!--										<li><a href="javascript:void(0)">San Diego</a></li>-->
-	<!--									</ul>-->
-	<!--								</div>-->
-	<!--							</div>-->
-	<!--						</div>-->
-	<!--						<!-- End Single Widget -->-->
-	<!--					</div>-->
-	<!--					<div class="col-lg-3 col-md-6 col-12">-->
-	<!--						<!-- Single Widget -->-->
-	<!--						<div class="single-footer f-link">-->
-	<!--							<h3>Quick Links</h3>-->
-	<!--							<ul>-->
-	<!--								<li><a href="javascript:void(0)">About Us</a></li>-->
-	<!--								<li><a href="javascript:void(0)">How It's Works</a></li>-->
-	<!--								<li><a href="javascript:void(0)">Login</a></li>-->
-	<!--								<li><a href="javascript:void(0)">Signup</a></li>-->
-	<!--								<li><a href="javascript:void(0)">Help & Support</a></li>-->
-	<!--							</ul>-->
-	<!--						</div>-->
-	<!--						<!-- End Single Widget -->-->
-	<!--					</div>-->
-	<!--					<div class="col-lg-3 col-md-6 col-12">-->
-	<!--						<!-- Single Widget -->-->
-	<!--						<div class="single-footer f-contact">-->
-	<!--							<h3>Contact</h3>-->
-	<!--							<ul>-->
-	<!--								<li>23 New Design Str, Lorem Upsum 10<br> Hudson Yards, USA</li>-->
-	<!--								<li>Tel. +(123) 1800-567-8990 <br> Mail. support@classigrids.com</li>-->
-	<!--							</ul>-->
-	<!--						</div>-->
-	<!--						<!-- End Single Widget -->-->
-	<!--					</div>-->
-	<!--				</div>-->
-	<!--			</div>-->
-	<!--		</div>-->
-	<!--		<!--/ End Footer Middle -->-->
-	<!--		<!-- Start Footer Bottom -->-->
-	<!--		<div class="footer-bottom">-->
-	<!--			<div class="container">-->
-	<!--				<div class="inner">-->
-	<!--					<div class="row">-->
-	<!--						<div class="col-12">-->
-	<!--							<div class="content">-->
-	<!--								<ul class="footer-bottom-links">-->
-	<!--									<li><a href="javascript:void(0)">Terms of use</a></li>-->
-	<!--									<li><a href="javascript:void(0)"> Privacy Policy</a></li>-->
-	<!--									<li><a href="javascript:void(0)">Advanced Search</a></li>-->
-	<!--									<li><a href="javascript:void(0)">Site Map</a></li>-->
-	<!--									<li><a href="javascript:void(0)">Information</a></li>-->
-	<!--								</ul>-->
-	<!--								<p class="copyright-text">Designed and Developed by <a href="https://graygrids.com/"-->
-	<!--										rel="nofollow" target="_blank">GrayGrids</a>-->
-	<!--								</p>-->
-	<!--								<ul class="footer-social">-->
-	<!--									<li><a href="javascript:void(0)"><i class="lni lni-facebook-filled"></i></a></li>-->
-	<!--									<li><a href="javascript:void(0)"><i class="lni lni-twitter-original"></i></a></li>-->
-	<!--									<li><a href="javascript:void(0)"><i class="lni lni-youtube"></i></a></li>-->
-	<!--									<li><a href="javascript:void(0)"><i class="lni lni-linkedin-original"></i></a></li>-->
-	<!--								</ul>-->
-	<!--							</div>-->
-	<!--						</div>-->
-	<!--					</div>-->
-	<!--				</div>-->
-	<!--			</div>-->
-	<!--		</div>-->
-	<!-- End Footer Middle -->
-	</footer>
-	<!--/ End Footer Area -->
 
 	<!-- ========================= scroll-top ========================= -->
-	<a href="#" class="scroll-top btn-hover">
-		<i class="lni lni-chevron-up"></i>
+	<a href="#" class="scroll-top btn-hover"> <i
+		class="lni lni-chevron-up"></i>
 	</a>
 
 	<!-- ========================= JS here ========================= -->
-	<!-- <script src="js/bootstrap.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 	<script src="js/wow.min.js"></script>
 	<script src="js/tiny-slider.js"></script>
 	<script src="js/glightbox.min.js"></script>
-	<script src="js/main.js"></script> -->
+	<script src="js/main.js"></script>
+	<script src="js/login.js"></script>
 </body>
 
 </html>

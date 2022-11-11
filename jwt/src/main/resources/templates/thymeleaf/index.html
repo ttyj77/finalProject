@@ -80,10 +80,9 @@
                                         <a href="category.html" aria-label="Toggle navigation">Categories</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="dd-menu collapsed" href="javascript:void(0)"
-                                            data-bs-toggle="collapse" data-bs-target="#submenu-1-3"
-                                            aria-controls="navbarSupportedContent" aria-expanded="false"
-                                            aria-label="Toggle navigation">Listings</a>
+                                        <a class="dd-menu collapsed" href="javascript:void(0)" data-bs-toggle="collapse"
+                                            data-bs-target="#submenu-1-3" aria-controls="navbarSupportedContent"
+                                            aria-expanded="false" aria-label="Toggle navigation">Listings</a>
                                         <ul class="sub-menu collapse" id="submenu-1-3">
                                             <li class="nav-item"><a href="item-listing-grid.html">Ad Grid</a></li>
                                             <li class="nav-item"><a href="item-listing-list.html">Ad Listing</a></li>
@@ -91,16 +90,16 @@
                                         </ul>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="dd-menu collapsed" href="javascript:void(0)"
-                                            data-bs-toggle="collapse" data-bs-target="#submenu-1-4"
-                                            aria-controls="navbarSupportedContent" aria-expanded="false"
-                                            aria-label="Toggle navigation">Pages</a>
+                                        <a class="dd-menu collapsed" href="javascript:void(0)" data-bs-toggle="collapse"
+                                            data-bs-target="#submenu-1-4" aria-controls="navbarSupportedContent"
+                                            aria-expanded="false" aria-label="Toggle navigation">Pages</a>
                                         <ul class="sub-menu mega-menu collapse" id="submenu-1-4">
                                             <li class="single-block">
                                                 <ul>
                                                     <li class="mega-menu-title">Essential Pages</li>
                                                     <li class="nav-item"><a href="about-us.html">About Us</a></li>
-                                                    <li class="nav-item"><a href="item-details.html">Ads Details</a></li>
+                                                    <li class="nav-item"><a href="item-details.html">Ads Details</a>
+                                                    </li>
                                                     <li class="nav-item"><a href="post-item.html">Ads Post</a></li>
                                                     <li class="nav-item"><a href="pricing.html">Pricing Table</a></li>
                                                     <li class="nav-item"><a href="register.html">Sign Up</a></li>
@@ -125,7 +124,8 @@
                                                     <li class="nav-item"><a href="favourite-items.html">Favorite Ads</a>
                                                     </li>
                                                     <li class="nav-item"><a href="post-item.html">Ad post</a></li>
-                                                    <li class="nav-item"><a href="bookmarked-items.html">Bookmarked Ad</a>
+                                                    <li class="nav-item"><a href="bookmarked-items.html">Bookmarked
+                                                            Ad</a>
                                                     </li>
                                                     <li class="nav-item"><a href="messages.html">Messages</a></li>
                                                     <li class="nav-item"><a href="delete-account.html">Close account</a>
@@ -136,10 +136,9 @@
                                         </ul>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="dd-menu collapsed" href="javascript:void(0)"
-                                            data-bs-toggle="collapse" data-bs-target="#submenu-1-5"
-                                            aria-controls="navbarSupportedContent" aria-expanded="false"
-                                            aria-label="Toggle navigation">Blog</a>
+                                        <a class="dd-menu collapsed" href="javascript:void(0)" data-bs-toggle="collapse"
+                                            data-bs-target="#submenu-1-5" aria-controls="navbarSupportedContent"
+                                            aria-expanded="false" aria-label="Toggle navigation">Blog</a>
                                         <ul class="sub-menu collapse" id="submenu-1-5">
                                             <li class="nav-item"><a href="blog-grid-sidebar.html">Blog Grid Sidebar</a>
                                             </li>
@@ -180,56 +179,28 @@
                         <!-- Start Hero Text -->
                         <div class="section-heading">
                             <h2 class="wow fadeInUp" data-wow-delay=".3s">Welcome to ClassiGrids</h2>
-                            <p class="wow fadeInUp" data-wow-delay=".5s">Buy And Sell Everything From Used Cars To Mobile Phones And <br>Computers,
+                            <p class="wow fadeInUp" data-wow-delay=".5s">Buy And Sell Everything From Used Cars To
+                                Mobile Phones And <br>Computers,
                                 Or Search For Property, Jobs And More.</p>
                         </div>
                         <!-- End Search Form -->
                         <!-- Start Search Form -->
                         <div class="search-form wow fadeInUp" data-wow-delay=".7s">
                             <div class="row">
-                                <div class="col-lg-4 col-md-4 col-12 p-0">
-                                    <div class="search-input">
-                                        <label for="keyword"><i class="lni lni-search-alt theme-color"></i></label>
-                                        <input type="text" name="keyword" id="keyword" placeholder="Product keyword">
+                                <form th:action="@{/productkeyword}" method="post">
+                                    <div class="col-lg-10 col-md-4 col-12 p-0">
+                                        <div id="search-input" class="search-input">
+                                            <label for="keyword"><i class="lni lni-search-alt theme-color"></i></label>
+                                            <input type="text " name="similar" id="similar" placeholder="상품명을 입력하세요">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-3 col-md-3 col-12 p-0">
-                                    <div class="search-input">
-                                        <label for="category"><i class="lni lni-grid-alt theme-color"></i></label>
-                                        <select name="category" id="category">
-                                            <option value="none" selected disabled>Categories</option>
-                                            <option value="none">Vehicle</option>
-                                            <option value="none">Electronics</option>
-                                            <option value="none">Mobiles</option>
-                                            <option value="none">Furniture</option>
-                                            <option value="none">Fashion</option>
-                                            <option value="none">Jobs</option>
-                                            <option value="none">Real Estate</option>
-                                            <option value="none">Animals</option>
-                                            <option value="none">Education</option>
-                                            <option value="none">Matrimony</option>
-                                        </select>
+                                    <div class="col-lg-2 col-md-2 col-12 p-0">
+                                        <div class="search-btn button">
+                                            <button type="submit" id="search-btn" class="btn btn-submit"><i
+                                                    class="lni lni-search-alt" onclick=""></i> 검색</button>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-3 col-md-3 col-12 p-0">
-                                    <div class="search-input">
-                                        <label for="location"><i class="lni lni-map-marker theme-color"></i></label>
-                                        <select name="location" id="location">
-                                            <option value="none" selected disabled>Locations</option>
-                                            <option value="none">New York</option>
-                                            <option value="none">California</option>
-                                            <option value="none">Washington</option>
-                                            <option value="none">Birmingham</option>
-                                            <option value="none">Chicago</option>
-                                            <option value="none">Phoenix</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 col-md-2 col-12 p-0">
-                                    <div class="search-btn button">
-                                        <button class="btn"><i class="lni lni-search-alt"></i> Search</button>
-                                    </div>
-                                </div>
+                                </form>
                             </div>
                         </div>
                         <!-- End Search Form -->
@@ -390,10 +361,12 @@
                         <!-- Start Single Grid -->
                         <div class="single-grid wow fadeInUp" data-wow-delay=".2s">
                             <div class="image">
-                                <a href="item-details.html" class="thumbnail"><img src="https://via.placeholder.com/600x400" alt="#"></a>
+                                <a href="item-details.html" class="thumbnail"><img
+                                        src="https://via.placeholder.com/600x400" alt="#"></a>
                                 <div class="author">
                                     <div class="author-image">
-                                        <a href="javascript:void(0)"><img src="https://via.placeholder.com/100x100" alt="#">
+                                        <a href="javascript:void(0)"><img src="https://via.placeholder.com/100x100"
+                                                alt="#">
                                             <span>Smith jeko</span></a>
                                     </div>
                                     <p class="sale">For Sale</p>
@@ -415,8 +388,10 @@
                                         <li><a href="javascript:void(0)">(35)</a></li>
                                     </ul>
                                     <ul class="info-list">
-                                        <li><a href="javascript:void(0)"><i class="lni lni-map-marker"></i> New York, US</a></li>
-                                        <li><a href="javascript:void(0)"><i class="lni lni-timer"></i> Feb 18, 2023</a></li>
+                                        <li><a href="javascript:void(0)"><i class="lni lni-map-marker"></i> New York,
+                                                US</a></li>
+                                        <li><a href="javascript:void(0)"><i class="lni lni-timer"></i> Feb 18, 2023</a>
+                                        </li>
                                     </ul>
                                 </div>
                                 <div class="bottom-content">
@@ -431,10 +406,12 @@
                         <!-- Start Single Grid -->
                         <div class="single-grid wow fadeInUp" data-wow-delay=".4s">
                             <div class="image">
-                                <a href="item-details.html" class="thumbnail"><img src="https://via.placeholder.com/600x400" alt="#"></a>
+                                <a href="item-details.html" class="thumbnail"><img
+                                        src="https://via.placeholder.com/600x400" alt="#"></a>
                                 <div class="author">
                                     <div class="author-image">
-                                        <a href="javascript:void(0)"><img src="https://via.placeholder.com/100x100" alt="#">
+                                        <a href="javascript:void(0)"><img src="https://via.placeholder.com/100x100"
+                                                alt="#">
                                             <span>Alex Jui</span></a>
                                     </div>
                                     <p class="sale">For Sale</p>
@@ -456,8 +433,10 @@
                                         <li><a href="javascript:void(0)">(20)</a></li>
                                     </ul>
                                     <ul class="info-list">
-                                        <li><a href="javascript:void(0)"><i class="lni lni-map-marker"></i> Dallas, Washington</a></li>
-                                        <li><a href="javascript:void(0)"><i class="lni lni-timer"></i> Jan 7, 2023</a></li>
+                                        <li><a href="javascript:void(0)"><i class="lni lni-map-marker"></i> Dallas,
+                                                Washington</a></li>
+                                        <li><a href="javascript:void(0)"><i class="lni lni-timer"></i> Jan 7, 2023</a>
+                                        </li>
                                     </ul>
                                 </div>
                                 <div class="bottom-content">
@@ -472,10 +451,12 @@
                         <!-- Start Single Grid -->
                         <div class="single-grid wow fadeInUp" data-wow-delay=".6s">
                             <div class="image">
-                                <a href="item-details.html" class="thumbnail"><img src="https://via.placeholder.com/600x400" alt="#"></a>
+                                <a href="item-details.html" class="thumbnail"><img
+                                        src="https://via.placeholder.com/600x400" alt="#"></a>
                                 <div class="author">
                                     <div class="author-image">
-                                        <a href="javascript:void(0)"><img src="https://via.placeholder.com/100x100" alt="#">
+                                        <a href="javascript:void(0)"><img src="https://via.placeholder.com/100x100"
+                                                alt="#">
                                             <span>Devid Milan</span></a>
                                     </div>
                                     <p class="sale">For Sale</p>
@@ -498,8 +479,10 @@
                                         <li><a href="javascript:void(0)">(55)</a></li>
                                     </ul>
                                     <ul class="info-list">
-                                        <li><a href="javascript:void(0)"><i class="lni lni-map-marker"></i> New York, US</a></li>
-                                        <li><a href="javascript:void(0)"><i class="lni lni-timer"></i> Mar 18, 2023</a></li>
+                                        <li><a href="javascript:void(0)"><i class="lni lni-map-marker"></i> New York,
+                                                US</a></li>
+                                        <li><a href="javascript:void(0)"><i class="lni lni-timer"></i> Mar 18, 2023</a>
+                                        </li>
                                     </ul>
                                 </div>
                                 <div class="bottom-content">
@@ -514,10 +497,12 @@
                         <!-- Start Single Grid -->
                         <div class="single-grid wow fadeInUp" data-wow-delay=".2s">
                             <div class="image">
-                                <a href="item-details.html" class="thumbnail"><img src="https://via.placeholder.com/600x400" alt="#"></a>
+                                <a href="item-details.html" class="thumbnail"><img
+                                        src="https://via.placeholder.com/600x400" alt="#"></a>
                                 <div class="author">
                                     <div class="author-image">
-                                        <a href="javascript:void(0)"><img src="https://via.placeholder.com/100x100" alt="#">
+                                        <a href="javascript:void(0)"><img src="https://via.placeholder.com/100x100"
+                                                alt="#">
                                             <span>Jesia Jully</span></a>
                                     </div>
                                     <p class="sale">For Sale</p>
@@ -539,8 +524,10 @@
                                         <li><a href="javascript:void(0)">(35)</a></li>
                                     </ul>
                                     <ul class="info-list">
-                                        <li><a href="javascript:void(0)"><i class="lni lni-map-marker"></i> New York, US</a></li>
-                                        <li><a href="javascript:void(0)"><i class="lni lni-timer"></i> Apr 12, 2023</a></li>
+                                        <li><a href="javascript:void(0)"><i class="lni lni-map-marker"></i> New York,
+                                                US</a></li>
+                                        <li><a href="javascript:void(0)"><i class="lni lni-timer"></i> Apr 12, 2023</a>
+                                        </li>
                                     </ul>
                                 </div>
                                 <div class="bottom-content">
@@ -555,10 +542,12 @@
                         <!-- Start Single Grid -->
                         <div class="single-grid wow fadeInUp" data-wow-delay=".4s">
                             <div class="image">
-                                <a href="item-details.html" class="thumbnail"><img src="https://via.placeholder.com/600x400" alt="#"></a>
+                                <a href="item-details.html" class="thumbnail"><img
+                                        src="https://via.placeholder.com/600x400" alt="#"></a>
                                 <div class="author">
                                     <div class="author-image">
-                                        <a href="javascript:void(0)"><img src="https://via.placeholder.com/100x100" alt="#">
+                                        <a href="javascript:void(0)"><img src="https://via.placeholder.com/100x100"
+                                                alt="#">
                                             <span>Thomas Deco</span></a>
                                     </div>
                                     <p class="sale">For Sale</p>
@@ -581,8 +570,10 @@
                                         <li><a href="javascript:void(0)">(35)</a></li>
                                     </ul>
                                     <ul class="info-list">
-                                        <li><a href="javascript:void(0)"><i class="lni lni-map-marker"></i> Louis, Missouri, US</a></li>
-                                        <li><a href="javascript:void(0)"><i class="lni lni-timer"></i> May 25, 2023</a></li>
+                                        <li><a href="javascript:void(0)"><i class="lni lni-map-marker"></i> Louis,
+                                                Missouri, US</a></li>
+                                        <li><a href="javascript:void(0)"><i class="lni lni-timer"></i> May 25, 2023</a>
+                                        </li>
                                     </ul>
                                 </div>
                                 <div class="bottom-content">
@@ -597,10 +588,12 @@
                         <!-- Start Single Grid -->
                         <div class="single-grid wow fadeInUp" data-wow-delay=".6s">
                             <div class="image">
-                                <a href="item-details.html" class="thumbnail"><img src="https://via.placeholder.com/600x400" alt="#"></a>
+                                <a href="item-details.html" class="thumbnail"><img
+                                        src="https://via.placeholder.com/600x400" alt="#"></a>
                                 <div class="author">
                                     <div class="author-image">
-                                        <a href="javascript:void(0)"><img src="https://via.placeholder.com/100x100" alt="#">
+                                        <a href="javascript:void(0)"><img src="https://via.placeholder.com/100x100"
+                                                alt="#">
                                             <span>Jonson zack</span></a>
                                     </div>
                                     <p class="sale">For Sale</p>
@@ -622,8 +615,10 @@
                                         <li><a href="javascript:void(0)">(20)</a></li>
                                     </ul>
                                     <ul class="info-list">
-                                        <li><a href="javascript:void(0)"><i class="lni lni-map-marker"></i> New York, US</a></li>
-                                        <li><a href="javascript:void(0)"><i class="lni lni-timer"></i> Feb 18, 2023</a></li>
+                                        <li><a href="javascript:void(0)"><i class="lni lni-map-marker"></i> New York,
+                                                US</a></li>
+                                        <li><a href="javascript:void(0)"><i class="lni lni-timer"></i> Feb 18, 2023</a>
+                                        </li>
                                     </ul>
                                 </div>
                                 <div class="bottom-content">
@@ -897,7 +892,8 @@
                                     <!-- Start Single Item -->
                                     <div class="single-item-grid">
                                         <div class="image">
-                                            <a href="item-details.html"><img src="https://via.placeholder.com/600x400" alt="#"></a>
+                                            <a href="item-details.html"><img src="https://via.placeholder.com/600x400"
+                                                    alt="#"></a>
                                             <i class=" cross-badge lni lni-bolt"></i>
                                             <span class="flat-badge sale">Sale</span>
                                         </div>
@@ -906,11 +902,13 @@
                                             <h3 class="title">
                                                 <a href="item-details.html">Apple Iphone X</a>
                                             </h3>
-                                            <p class="location"><a href="javascript:void(0)"><i class="lni lni-map-marker">
+                                            <p class="location"><a href="javascript:void(0)"><i
+                                                        class="lni lni-map-marker">
                                                     </i>Boston</a></p>
                                             <ul class="info">
                                                 <li class="price">$890.00</li>
-                                                <li class="like"><a href="javascript:void(0)"><i class="lni lni-heart"></i></a>
+                                                <li class="like"><a href="javascript:void(0)"><i
+                                                            class="lni lni-heart"></i></a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -921,7 +919,8 @@
                                     <!-- Start Single Item -->
                                     <div class="single-item-grid">
                                         <div class="image">
-                                            <a href="item-details.html"><img src="https://via.placeholder.com/600x400" alt="#"></a>
+                                            <a href="item-details.html"><img src="https://via.placeholder.com/600x400"
+                                                    alt="#"></a>
                                             <i class=" cross-badge lni lni-bolt"></i>
                                             <span class="flat-badge sale">Sale</span>
                                         </div>
@@ -930,11 +929,13 @@
                                             <h3 class="title">
                                                 <a href="item-details.html">Travel Kit</a>
                                             </h3>
-                                            <p class="location"><a href="javascript:void(0)"><i class="lni lni-map-marker">
+                                            <p class="location"><a href="javascript:void(0)"><i
+                                                        class="lni lni-map-marker">
                                                     </i>San Francisco</a></p>
                                             <ul class="info">
                                                 <li class="price">$580.00</li>
-                                                <li class="like"><a href="javascript:void(0)"><i class="lni lni-heart"></i></a>
+                                                <li class="like"><a href="javascript:void(0)"><i
+                                                            class="lni lni-heart"></i></a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -945,7 +946,8 @@
                                     <!-- Start Single Item -->
                                     <div class="single-item-grid">
                                         <div class="image">
-                                            <a href="item-details.html"><img src="https://via.placeholder.com/600x400" alt="#"></a>
+                                            <a href="item-details.html"><img src="https://via.placeholder.com/600x400"
+                                                    alt="#"></a>
                                             <i class=" cross-badge lni lni-bolt"></i>
                                             <span class="flat-badge sale">Sale</span>
                                         </div>
@@ -954,11 +956,13 @@
                                             <h3 class="title">
                                                 <a href="item-details.html">Nikon DSLR Camera</a>
                                             </h3>
-                                            <p class="location"><a href="javascript:void(0)"><i class="lni lni-map-marker">
+                                            <p class="location"><a href="javascript:void(0)"><i
+                                                        class="lni lni-map-marker">
                                                     </i>Alaska, USA</a></p>
                                             <ul class="info">
                                                 <li class="price">$560.00</li>
-                                                <li class="like"><a href="javascript:void(0)"><i class="lni lni-heart"></i></a>
+                                                <li class="like"><a href="javascript:void(0)"><i
+                                                            class="lni lni-heart"></i></a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -969,7 +973,8 @@
                                     <!-- Start Single Item -->
                                     <div class="single-item-grid">
                                         <div class="image">
-                                            <a href="item-details.html"><img src="https://via.placeholder.com/600x400" alt="#"></a>
+                                            <a href="item-details.html"><img src="https://via.placeholder.com/600x400"
+                                                    alt="#"></a>
                                             <i class=" cross-badge lni lni-bolt"></i>
                                             <span class="flat-badge sale">Sale</span>
                                         </div>
@@ -978,11 +983,13 @@
                                             <h3 class="title">
                                                 <a href="item-details.html">Poster Paint</a>
                                             </h3>
-                                            <p class="location"><a href="javascript:void(0)"><i class="lni lni-map-marker">
+                                            <p class="location"><a href="javascript:void(0)"><i
+                                                        class="lni lni-map-marker">
                                                     </i>Las Vegas</a></p>
                                             <ul class="info">
                                                 <li class="price">$85.00</li>
-                                                <li class="like"><a href="javascript:void(0)"><i class="lni lni-heart"></i></a>
+                                                <li class="like"><a href="javascript:void(0)"><i
+                                                            class="lni lni-heart"></i></a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -993,7 +1000,8 @@
                                     <!-- Start Single Item -->
                                     <div class="single-item-grid">
                                         <div class="image">
-                                            <a href="item-details.html"><img src="https://via.placeholder.com/600x400" alt="#"></a>
+                                            <a href="item-details.html"><img src="https://via.placeholder.com/600x400"
+                                                    alt="#"></a>
                                             <i class=" cross-badge lni lni-bolt"></i>
                                             <span class="flat-badge sale">Sale</span>
                                         </div>
@@ -1002,11 +1010,13 @@
                                             <h3 class="title">
                                                 <a href="item-details.html">Official Metting Chair</a>
                                             </h3>
-                                            <p class="location"><a href="javascript:void(0)"><i class="lni lni-map-marker">
+                                            <p class="location"><a href="javascript:void(0)"><i
+                                                        class="lni lni-map-marker">
                                                     </i>Alaska, USA</a></p>
                                             <ul class="info">
                                                 <li class="price">$750.00</li>
-                                                <li class="like"><a href="javascript:void(0)"><i class="lni lni-heart"></i></a>
+                                                <li class="like"><a href="javascript:void(0)"><i
+                                                            class="lni lni-heart"></i></a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -1017,7 +1027,8 @@
                                     <!-- Start Single Item -->
                                     <div class="single-item-grid">
                                         <div class="image">
-                                            <a href="item-details.html"><img src="https://via.placeholder.com/600x400" alt="#"></a>
+                                            <a href="item-details.html"><img src="https://via.placeholder.com/600x400"
+                                                    alt="#"></a>
                                             <i class=" cross-badge lni lni-bolt"></i>
                                             <span class="flat-badge rent">Rent</span>
                                         </div>
@@ -1026,11 +1037,13 @@
                                             <h3 class="title">
                                                 <a href="item-details.html">Story Book</a>
                                             </h3>
-                                            <p class="location"><a href="javascript:void(0)"><i class="lni lni-map-marker">
+                                            <p class="location"><a href="javascript:void(0)"><i
+                                                        class="lni lni-map-marker">
                                                     </i>New York, USA</a></p>
                                             <ul class="info">
                                                 <li class="price">$120.00</li>
-                                                <li class="like"><a href="javascript:void(0)"><i class="lni lni-heart"></i></a>
+                                                <li class="like"><a href="javascript:void(0)"><i
+                                                            class="lni lni-heart"></i></a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -1041,7 +1054,8 @@
                                     <!-- Start Single Item -->
                                     <div class="single-item-grid">
                                         <div class="image">
-                                            <a href="item-details.html"><img src="https://via.placeholder.com/600x400" alt="#"></a>
+                                            <a href="item-details.html"><img src="https://via.placeholder.com/600x400"
+                                                    alt="#"></a>
                                             <i class=" cross-badge lni lni-bolt"></i>
                                             <span class="flat-badge sale">Sale</span>
                                         </div>
@@ -1050,11 +1064,13 @@
                                             <h3 class="title">
                                                 <a href="item-details.html">Cctv camera</a>
                                             </h3>
-                                            <p class="location"><a href="javascript:void(0)"><i class="lni lni-map-marker">
+                                            <p class="location"><a href="javascript:void(0)"><i
+                                                        class="lni lni-map-marker">
                                                     </i>Delhi, India</a></p>
                                             <ul class="info">
                                                 <li class="price">$350.00</li>
-                                                <li class="like"><a href="javascript:void(0)"><i class="lni lni-heart"></i></a>
+                                                <li class="like"><a href="javascript:void(0)"><i
+                                                            class="lni lni-heart"></i></a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -1065,7 +1081,8 @@
                                     <!-- Start Single Item -->
                                     <div class="single-item-grid">
                                         <div class="image">
-                                            <a href="item-details.html"><img src="https://via.placeholder.com/600x400" alt="#"></a>
+                                            <a href="item-details.html"><img src="https://via.placeholder.com/600x400"
+                                                    alt="#"></a>
                                             <i class=" cross-badge lni lni-bolt"></i>
                                             <span class="flat-badge sale">Sale</span>
                                         </div>
@@ -1074,11 +1091,13 @@
                                             <h3 class="title">
                                                 <a href="item-details.html">Samsung Glalaxy S8</a>
                                             </h3>
-                                            <p class="location"><a href="javascript:void(0)"><i class="lni lni-map-marker">
+                                            <p class="location"><a href="javascript:void(0)"><i
+                                                        class="lni lni-map-marker">
                                                     </i>Delaware, USA</a></p>
                                             <ul class="info">
                                                 <li class="price">$299.00</li>
-                                                <li class="like"><a href="javascript:void(0)"><i class="lni lni-heart"></i></a>
+                                                <li class="like"><a href="javascript:void(0)"><i
+                                                            class="lni lni-heart"></i></a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -1093,7 +1112,8 @@
                                     <!-- Start Single Item -->
                                     <div class="single-item-grid">
                                         <div class="image">
-                                            <a href="item-details.html"><img src="https://via.placeholder.com/600x400" alt="#"></a>
+                                            <a href="item-details.html"><img src="https://via.placeholder.com/600x400"
+                                                    alt="#"></a>
                                             <i class=" cross-badge lni lni-bolt"></i>
                                             <span class="flat-badge sale">Sale</span>
                                         </div>
@@ -1102,11 +1122,13 @@
                                             <h3 class="title">
                                                 <a href="item-details.html">Travel Kit</a>
                                             </h3>
-                                            <p class="location"><a href="javascript:void(0)"><i class="lni lni-map-marker">
+                                            <p class="location"><a href="javascript:void(0)"><i
+                                                        class="lni lni-map-marker">
                                                     </i>San Francisco</a></p>
                                             <ul class="info">
                                                 <li class="price">$580.00</li>
-                                                <li class="like"><a href="javascript:void(0)"><i class="lni lni-heart"></i></a>
+                                                <li class="like"><a href="javascript:void(0)"><i
+                                                            class="lni lni-heart"></i></a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -1117,7 +1139,8 @@
                                     <!-- Start Single Item -->
                                     <div class="single-item-grid">
                                         <div class="image">
-                                            <a href="item-details.html"><img src="https://via.placeholder.com/600x400" alt="#"></a>
+                                            <a href="item-details.html"><img src="https://via.placeholder.com/600x400"
+                                                    alt="#"></a>
                                             <i class=" cross-badge lni lni-bolt"></i>
                                             <span class="flat-badge sale">Sale</span>
                                         </div>
@@ -1126,11 +1149,13 @@
                                             <h3 class="title">
                                                 <a href="item-details.html">Nikon DSLR Camera</a>
                                             </h3>
-                                            <p class="location"><a href="javascript:void(0)"><i class="lni lni-map-marker">
+                                            <p class="location"><a href="javascript:void(0)"><i
+                                                        class="lni lni-map-marker">
                                                     </i>Alaska, USA</a></p>
                                             <ul class="info">
                                                 <li class="price">$560.00</li>
-                                                <li class="like"><a href="javascript:void(0)"><i class="lni lni-heart"></i></a>
+                                                <li class="like"><a href="javascript:void(0)"><i
+                                                            class="lni lni-heart"></i></a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -1141,7 +1166,8 @@
                                     <!-- Start Single Item -->
                                     <div class="single-item-grid">
                                         <div class="image">
-                                            <a href="item-details.html"><img src="https://via.placeholder.com/600x400" alt="#"></a>
+                                            <a href="item-details.html"><img src="https://via.placeholder.com/600x400"
+                                                    alt="#"></a>
                                             <i class=" cross-badge lni lni-bolt"></i>
                                             <span class="flat-badge sale">Sale</span>
                                         </div>
@@ -1150,11 +1176,13 @@
                                             <h3 class="title">
                                                 <a href="item-details.html">Apple Iphone X</a>
                                             </h3>
-                                            <p class="location"><a href="javascript:void(0)"><i class="lni lni-map-marker">
+                                            <p class="location"><a href="javascript:void(0)"><i
+                                                        class="lni lni-map-marker">
                                                     </i>Boston</a></p>
                                             <ul class="info">
                                                 <li class="price">$890.00</li>
-                                                <li class="like"><a href="javascript:void(0)"><i class="lni lni-heart"></i></a>
+                                                <li class="like"><a href="javascript:void(0)"><i
+                                                            class="lni lni-heart"></i></a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -1165,7 +1193,8 @@
                                     <!-- Start Single Item -->
                                     <div class="single-item-grid">
                                         <div class="image">
-                                            <a href="item-details.html"><img src="https://via.placeholder.com/600x400" alt="#"></a>
+                                            <a href="item-details.html"><img src="https://via.placeholder.com/600x400"
+                                                    alt="#"></a>
                                             <i class=" cross-badge lni lni-bolt"></i>
                                             <span class="flat-badge sale">Sale</span>
                                         </div>
@@ -1174,11 +1203,13 @@
                                             <h3 class="title">
                                                 <a href="item-details.html">Poster Paint</a>
                                             </h3>
-                                            <p class="location"><a href="javascript:void(0)"><i class="lni lni-map-marker">
+                                            <p class="location"><a href="javascript:void(0)"><i
+                                                        class="lni lni-map-marker">
                                                     </i>Las Vegas</a></p>
                                             <ul class="info">
                                                 <li class="price">$85.00</li>
-                                                <li class="like"><a href="javascript:void(0)"><i class="lni lni-heart"></i></a>
+                                                <li class="like"><a href="javascript:void(0)"><i
+                                                            class="lni lni-heart"></i></a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -1189,7 +1220,8 @@
                                     <!-- Start Single Item -->
                                     <div class="single-item-grid">
                                         <div class="image">
-                                            <a href="item-details.html"><img src="https://via.placeholder.com/600x400" alt="#"></a>
+                                            <a href="item-details.html"><img src="https://via.placeholder.com/600x400"
+                                                    alt="#"></a>
                                             <i class=" cross-badge lni lni-bolt"></i>
                                             <span class="flat-badge sale">Sale</span>
                                         </div>
@@ -1198,11 +1230,13 @@
                                             <h3 class="title">
                                                 <a href="item-details.html">Cctv camera</a>
                                             </h3>
-                                            <p class="location"><a href="javascript:void(0)"><i class="lni lni-map-marker">
+                                            <p class="location"><a href="javascript:void(0)"><i
+                                                        class="lni lni-map-marker">
                                                     </i>Delhi, India</a></p>
                                             <ul class="info">
                                                 <li class="price">$350.00</li>
-                                                <li class="like"><a href="javascript:void(0)"><i class="lni lni-heart"></i></a>
+                                                <li class="like"><a href="javascript:void(0)"><i
+                                                            class="lni lni-heart"></i></a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -1213,7 +1247,8 @@
                                     <!-- Start Single Item -->
                                     <div class="single-item-grid">
                                         <div class="image">
-                                            <a href="item-details.html"><img src="https://via.placeholder.com/600x400" alt="#"></a>
+                                            <a href="item-details.html"><img src="https://via.placeholder.com/600x400"
+                                                    alt="#"></a>
                                             <i class=" cross-badge lni lni-bolt"></i>
                                             <span class="flat-badge sale">Sale</span>
                                         </div>
@@ -1222,11 +1257,13 @@
                                             <h3 class="title">
                                                 <a href="item-details.html">Samsung Glalaxy S8</a>
                                             </h3>
-                                            <p class="location"><a href="javascript:void(0)"><i class="lni lni-map-marker">
+                                            <p class="location"><a href="javascript:void(0)"><i
+                                                        class="lni lni-map-marker">
                                                     </i>Delaware, USA</a></p>
                                             <ul class="info">
                                                 <li class="price">$299.00</li>
-                                                <li class="like"><a href="javascript:void(0)"><i class="lni lni-heart"></i></a>
+                                                <li class="like"><a href="javascript:void(0)"><i
+                                                            class="lni lni-heart"></i></a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -1237,7 +1274,8 @@
                                     <!-- Start Single Item -->
                                     <div class="single-item-grid">
                                         <div class="image">
-                                            <a href="item-details.html"><img src="https://via.placeholder.com/600x400" alt="#"></a>
+                                            <a href="item-details.html"><img src="https://via.placeholder.com/600x400"
+                                                    alt="#"></a>
                                             <i class=" cross-badge lni lni-bolt"></i>
                                             <span class="flat-badge sale">Sale</span>
                                         </div>
@@ -1246,11 +1284,13 @@
                                             <h3 class="title">
                                                 <a href="item-details.html">Official Metting Chair</a>
                                             </h3>
-                                            <p class="location"><a href="javascript:void(0)"><i class="lni lni-map-marker">
+                                            <p class="location"><a href="javascript:void(0)"><i
+                                                        class="lni lni-map-marker">
                                                     </i>Alaska, USA</a></p>
                                             <ul class="info">
                                                 <li class="price">$750.00</li>
-                                                <li class="like"><a href="javascript:void(0)"><i class="lni lni-heart"></i></a>
+                                                <li class="like"><a href="javascript:void(0)"><i
+                                                            class="lni lni-heart"></i></a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -1261,7 +1301,8 @@
                                     <!-- Start Single Item -->
                                     <div class="single-item-grid">
                                         <div class="image">
-                                            <a href="item-details.html"><img src="https://via.placeholder.com/600x400" alt="#"></a>
+                                            <a href="item-details.html"><img src="https://via.placeholder.com/600x400"
+                                                    alt="#"></a>
                                             <i class=" cross-badge lni lni-bolt"></i>
                                             <span class="flat-badge rent">Rent</span>
                                         </div>
@@ -1270,11 +1311,13 @@
                                             <h3 class="title">
                                                 <a href="item-details.html">Story Book</a>
                                             </h3>
-                                            <p class="location"><a href="javascript:void(0)"><i class="lni lni-map-marker">
+                                            <p class="location"><a href="javascript:void(0)"><i
+                                                        class="lni lni-map-marker">
                                                     </i>New York, USA</a></p>
                                             <ul class="info">
                                                 <li class="price">$120.00</li>
-                                                <li class="like"><a href="javascript:void(0)"><i class="lni lni-heart"></i></a>
+                                                <li class="like"><a href="javascript:void(0)"><i
+                                                            class="lni lni-heart"></i></a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -1289,7 +1332,8 @@
                                     <!-- Start Single Item -->
                                     <div class="single-item-grid">
                                         <div class="image">
-                                            <a href="item-details.html"><img src="https://via.placeholder.com/600x400" alt="#"></a>
+                                            <a href="item-details.html"><img src="https://via.placeholder.com/600x400"
+                                                    alt="#"></a>
                                             <i class=" cross-badge lni lni-bolt"></i>
                                             <span class="flat-badge sale">Sale</span>
                                         </div>
@@ -1298,11 +1342,13 @@
                                             <h3 class="title">
                                                 <a href="item-details.html">Nikon DSLR Camera</a>
                                             </h3>
-                                            <p class="location"><a href="javascript:void(0)"><i class="lni lni-map-marker">
+                                            <p class="location"><a href="javascript:void(0)"><i
+                                                        class="lni lni-map-marker">
                                                     </i>Alaska, USA</a></p>
                                             <ul class="info">
                                                 <li class="price">$560.00</li>
-                                                <li class="like"><a href="javascript:void(0)"><i class="lni lni-heart"></i></a>
+                                                <li class="like"><a href="javascript:void(0)"><i
+                                                            class="lni lni-heart"></i></a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -1313,7 +1359,8 @@
                                     <!-- Start Single Item -->
                                     <div class="single-item-grid">
                                         <div class="image">
-                                            <a href="item-details.html"><img src="https://via.placeholder.com/600x400" alt="#"></a>
+                                            <a href="item-details.html"><img src="https://via.placeholder.com/600x400"
+                                                    alt="#"></a>
                                             <i class=" cross-badge lni lni-bolt"></i>
                                             <span class="flat-badge sale">Sale</span>
                                         </div>
@@ -1322,11 +1369,13 @@
                                             <h3 class="title">
                                                 <a href="item-details.html">Poster Paint</a>
                                             </h3>
-                                            <p class="location"><a href="javascript:void(0)"><i class="lni lni-map-marker">
+                                            <p class="location"><a href="javascript:void(0)"><i
+                                                        class="lni lni-map-marker">
                                                     </i>Las Vegas</a></p>
                                             <ul class="info">
                                                 <li class="price">$85.00</li>
-                                                <li class="like"><a href="javascript:void(0)"><i class="lni lni-heart"></i></a>
+                                                <li class="like"><a href="javascript:void(0)"><i
+                                                            class="lni lni-heart"></i></a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -1337,7 +1386,8 @@
                                     <!-- Start Single Item -->
                                     <div class="single-item-grid">
                                         <div class="image">
-                                            <a href="item-details.html"><img src="https://via.placeholder.com/600x400" alt="#"></a>
+                                            <a href="item-details.html"><img src="https://via.placeholder.com/600x400"
+                                                    alt="#"></a>
                                             <i class=" cross-badge lni lni-bolt"></i>
                                             <span class="flat-badge sale">Sale</span>
                                         </div>
@@ -1346,11 +1396,13 @@
                                             <h3 class="title">
                                                 <a href="item-details.html">Official Metting Chair</a>
                                             </h3>
-                                            <p class="location"><a href="javascript:void(0)"><i class="lni lni-map-marker">
+                                            <p class="location"><a href="javascript:void(0)"><i
+                                                        class="lni lni-map-marker">
                                                     </i>Alaska, USA</a></p>
                                             <ul class="info">
                                                 <li class="price">$750.00</li>
-                                                <li class="like"><a href="javascript:void(0)"><i class="lni lni-heart"></i></a>
+                                                <li class="like"><a href="javascript:void(0)"><i
+                                                            class="lni lni-heart"></i></a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -1361,7 +1413,8 @@
                                     <!-- Start Single Item -->
                                     <div class="single-item-grid">
                                         <div class="image">
-                                            <a href="item-details.html"><img src="https://via.placeholder.com/600x400" alt="#"></a>
+                                            <a href="item-details.html"><img src="https://via.placeholder.com/600x400"
+                                                    alt="#"></a>
                                             <i class=" cross-badge lni lni-bolt"></i>
                                             <span class="flat-badge sale">Sale</span>
                                         </div>
@@ -1370,11 +1423,13 @@
                                             <h3 class="title">
                                                 <a href="item-details.html">Apple Iphone X</a>
                                             </h3>
-                                            <p class="location"><a href="javascript:void(0)"><i class="lni lni-map-marker">
+                                            <p class="location"><a href="javascript:void(0)"><i
+                                                        class="lni lni-map-marker">
                                                     </i>Boston</a></p>
                                             <ul class="info">
                                                 <li class="price">$890.00</li>
-                                                <li class="like"><a href="javascript:void(0)"><i class="lni lni-heart"></i></a>
+                                                <li class="like"><a href="javascript:void(0)"><i
+                                                            class="lni lni-heart"></i></a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -1385,7 +1440,8 @@
                                     <!-- Start Single Item -->
                                     <div class="single-item-grid">
                                         <div class="image">
-                                            <a href="item-details.html"><img src="https://via.placeholder.com/600x400" alt="#"></a>
+                                            <a href="item-details.html"><img src="https://via.placeholder.com/600x400"
+                                                    alt="#"></a>
                                             <i class=" cross-badge lni lni-bolt"></i>
                                             <span class="flat-badge sale">Sale</span>
                                         </div>
@@ -1394,11 +1450,13 @@
                                             <h3 class="title">
                                                 <a href="item-details.html">Travel Kit</a>
                                             </h3>
-                                            <p class="location"><a href="javascript:void(0)"><i class="lni lni-map-marker">
+                                            <p class="location"><a href="javascript:void(0)"><i
+                                                        class="lni lni-map-marker">
                                                     </i>San Francisco</a></p>
                                             <ul class="info">
                                                 <li class="price">$580.00</li>
-                                                <li class="like"><a href="javascript:void(0)"><i class="lni lni-heart"></i></a>
+                                                <li class="like"><a href="javascript:void(0)"><i
+                                                            class="lni lni-heart"></i></a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -1409,7 +1467,8 @@
                                     <!-- Start Single Item -->
                                     <div class="single-item-grid">
                                         <div class="image">
-                                            <a href="item-details.html"><img src="https://via.placeholder.com/600x400" alt="#"></a>
+                                            <a href="item-details.html"><img src="https://via.placeholder.com/600x400"
+                                                    alt="#"></a>
                                             <i class=" cross-badge lni lni-bolt"></i>
                                             <span class="flat-badge rent">Rent</span>
                                         </div>
@@ -1418,11 +1477,13 @@
                                             <h3 class="title">
                                                 <a href="item-details.html">Story Book</a>
                                             </h3>
-                                            <p class="location"><a href="javascript:void(0)"><i class="lni lni-map-marker">
+                                            <p class="location"><a href="javascript:void(0)"><i
+                                                        class="lni lni-map-marker">
                                                     </i>New York, USA</a></p>
                                             <ul class="info">
                                                 <li class="price">$120.00</li>
-                                                <li class="like"><a href="javascript:void(0)"><i class="lni lni-heart"></i></a>
+                                                <li class="like"><a href="javascript:void(0)"><i
+                                                            class="lni lni-heart"></i></a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -1433,7 +1494,8 @@
                                     <!-- Start Single Item -->
                                     <div class="single-item-grid">
                                         <div class="image">
-                                            <a href="item-details.html"><img src="https://via.placeholder.com/600x400" alt="#"></a>
+                                            <a href="item-details.html"><img src="https://via.placeholder.com/600x400"
+                                                    alt="#"></a>
                                             <i class=" cross-badge lni lni-bolt"></i>
                                             <span class="flat-badge sale">Sale</span>
                                         </div>
@@ -1442,11 +1504,13 @@
                                             <h3 class="title">
                                                 <a href="item-details.html">Cctv camera</a>
                                             </h3>
-                                            <p class="location"><a href="javascript:void(0)"><i class="lni lni-map-marker">
+                                            <p class="location"><a href="javascript:void(0)"><i
+                                                        class="lni lni-map-marker">
                                                     </i>Delhi, India</a></p>
                                             <ul class="info">
                                                 <li class="price">$350.00</li>
-                                                <li class="like"><a href="javascript:void(0)"><i class="lni lni-heart"></i></a>
+                                                <li class="like"><a href="javascript:void(0)"><i
+                                                            class="lni lni-heart"></i></a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -1457,7 +1521,8 @@
                                     <!-- Start Single Item -->
                                     <div class="single-item-grid">
                                         <div class="image">
-                                            <a href="item-details.html"><img src="https://via.placeholder.com/600x400" alt="#"></a>
+                                            <a href="item-details.html"><img src="https://via.placeholder.com/600x400"
+                                                    alt="#"></a>
                                             <i class=" cross-badge lni lni-bolt"></i>
                                             <span class="flat-badge sale">Sale</span>
                                         </div>
@@ -1466,11 +1531,13 @@
                                             <h3 class="title">
                                                 <a href="item-details.html">Samsung Glalaxy S8</a>
                                             </h3>
-                                            <p class="location"><a href="javascript:void(0)"><i class="lni lni-map-marker">
+                                            <p class="location"><a href="javascript:void(0)"><i
+                                                        class="lni lni-map-marker">
                                                     </i>Delaware, USA</a></p>
                                             <ul class="info">
                                                 <li class="price">$299.00</li>
-                                                <li class="like"><a href="javascript:void(0)"><i class="lni lni-heart"></i></a>
+                                                <li class="like"><a href="javascript:void(0)"><i
+                                                            class="lni lni-heart"></i></a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -1734,7 +1801,8 @@
                     <!-- Single News -->
                     <div class="single-news wow fadeInUp" data-wow-delay=".3s">
                         <div class="image">
-                            <a href="blog-single-sidebar.html"><img class="thumb" src="https://via.placeholder.com/370x230" alt="#"></a>
+                            <a href="blog-single-sidebar.html"><img class="thumb"
+                                    src="https://via.placeholder.com/370x230" alt="#"></a>
                         </div>
                         <div class="content-body">
                             <h4 class="title"><a href="blog-single-sidebar.html">10 Things Successful Mompreneurs Do
@@ -1755,10 +1823,12 @@
                     <!-- Single News -->
                     <div class="single-news wow fadeInUp" data-wow-delay=".5s">
                         <div class="image">
-                            <a href="blog-single-sidebar.html"><img class="thumb" src="https://via.placeholder.com/370x230" alt="#"></a>
+                            <a href="blog-single-sidebar.html"><img class="thumb"
+                                    src="https://via.placeholder.com/370x230" alt="#"></a>
                         </div>
                         <div class="content-body">
-                            <h4 class="title"><a href="blog-single-sidebar.html">A digital prescription for the industry.</a>
+                            <h4 class="title"><a href="blog-single-sidebar.html">A digital prescription for the
+                                    industry.</a>
                             </h4>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis soluta libero molestiae,
                                 id reiciendis ipsum. </p>
@@ -1776,7 +1846,8 @@
                     <!-- Single News -->
                     <div class="single-news wow fadeInUp" data-wow-delay=".7s">
                         <div class="image">
-                            <a href="blog-single-sidebar.html"><img class="thumb" src="https://via.placeholder.com/370x230" alt="#"></a>
+                            <a href="blog-single-sidebar.html"><img class="thumb"
+                                    src="https://via.placeholder.com/370x230" alt="#"></a>
                         </div>
                         <div class="content-body">
                             <h4 class="title"><a href="blog-single-sidebar.html">Strategic & commercial approach with
@@ -1984,7 +2055,7 @@
                 }
             }
         });
-        
+
         //========= testimonial 
         tns({
             container: '.testimonial-slider',

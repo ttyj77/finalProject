@@ -33,6 +33,10 @@ public class UserService {
 		return userDao.findByUsername(username);
 	}
 
-	
+//	public String createToken(UserVo UserVo) {
+//	    UserVo user = userDao.findByUsername(UserVo.getUsername());
+//	      //비밀번호 확인 등의 유효성 검사 진행
+//	    return jwtTokenProvider.createToken(user.getName());
+//	}
 	
 }

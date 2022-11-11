@@ -1,16 +1,20 @@
 package com.ssag.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ssag.config.auth.PrincipalDetails;
 import com.ssag.dao.UserDao;
+import com.ssag.model.TokenResponse;
 import com.ssag.model.UserVo;
 import com.ssag.service.UserService;
 
@@ -31,11 +35,11 @@ public class RestApiController {
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 
-	@GetMapping("/home")
-	@ResponseBody
-	public String home() {
-		return "<h1>home</h1>";
-	}
+//	@GetMapping("/home")
+//	@ResponseBody
+//	public String home() {
+//		return "<h1>home</h1>";
+//	}
 
 	@PostMapping("token")
 	public String token() {
@@ -59,7 +63,7 @@ public class RestApiController {
 		return "register";
 	}
 
-	@GetMapping("/user")
+	@GetMapping("api/v1/user")
 	public String user(Authentication authentication, Model model) {
 		PrincipalDetails principal = (PrincipalDetails) authentication.getPrincipal();
 		System.out.println("principal : " + principal.getUserVo().getCode());
@@ -80,9 +84,13 @@ public class RestApiController {
 
 	@PostMapping("/login")
 	public String login(String usernaem, String password) {
-		return "redirect:/login";
-//		  UserVo member = userService.findById(user.get("username"))
-
-//	        return jwtTokenProvider.createToken(member.getUsername(), member.getRoles());
+		return "redirect:/";
 	}
+	
+
+//	@PostMapping("/login")
+//	public ResponseEntity<TokenResponse> login(@RequestBody UserVo userVo) {
+//		String token = userService.createToken(userVo);
+//		return ResponseEntity.ok().body(new TokenResponse(token, "bearer"));
+//	}
 }
